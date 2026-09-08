@@ -1,0 +1,804 @@
+{
+  "version": 2,
+  "nodes": [
+    {
+      "id": "hero",
+      "type": "section",
+      "props": {
+        "width": "wide",
+        "paddingY": 10,
+        "background": "ink",
+        "align": "center"
+      },
+      "styles": {
+        "base": {
+          "backgroundImage": "/images/hero-bus.jpg",
+          "backgroundSize": "cover",
+          "backgroundPosition": "center",
+          "minHeight": "70vh",
+          "position": "relative"
+        }
+      },
+      "children": [
+        {
+          "id": "hero-row",
+          "type": "row",
+          "props": {
+            "gap": 7,
+            "align": "center",
+            "stackOn": "tablet"
+          },
+          "children": [
+            {
+              "id": "hero-copy",
+              "type": "column",
+              "props": {
+                "span": 7
+              },
+              "children": [
+                {
+                  "id": "hero-title",
+                  "type": "heading",
+                  "props": {
+                    "eyebrow": "New & Used School Buses",
+                    "text": "Florida's Premier IC Bus Dealer",
+                    "headingLevel": 1
+                  }
+                },
+                {
+                  "id": "hero-lede",
+                  "type": "text",
+                  "props": {
+                    "text": "Sun State Bus Centers is the exclusive IC Bus sales, parts, and service dealer for the state of Florida. IC Bus school buses come with a range of power options to fit your fleet.",
+                    "width": "full"
+                  }
+                },
+                {
+                  "id": "hero-search",
+                  "type": "widget",
+                  "props": {
+                    "widget": "inventory-search",
+                    "config": {
+                      "placeholder": "Search by stock #, model, or VIN"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "id": "hero-actions",
+              "type": "column",
+              "props": {
+                "span": 5
+              },
+              "children": [
+                {
+                  "id": "hero-tiles",
+                  "type": "action-tiles",
+                  "props": {
+                    "tiles": [
+                      {
+                        "label": "New Buses",
+                        "url": "/store/inventory?condition=new",
+                        "icon": {
+                          "src": "/images/icon-bus.svg",
+                          "alt": "New Buses icon"
+                        }
+                      },
+                      {
+                        "label": "Used Buses",
+                        "url": "/store/inventory?condition=used",
+                        "icon": {
+                          "src": "/images/icon-bus.svg",
+                          "alt": "Used Buses icon"
+                        }
+                      },
+                      {
+                        "label": "Schedule Service",
+                        "url": "/#service",
+                        "icon": {
+                          "src": "/images/icon-service.svg",
+                          "alt": "Schedule Service icon"
+                        }
+                      },
+                      {
+                        "label": "Order Parts",
+                        "url": "/#parts",
+                        "icon": {
+                          "src": "/images/icon-parts.svg",
+                          "alt": "Order Parts icon"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "inventory",
+      "type": "section",
+      "props": {
+        "width": "boxed",
+        "paddingY": 9,
+        "background": "card",
+        "anchor": "inventory"
+      },
+      "children": [
+        {
+          "id": "inv-head",
+          "type": "row",
+          "props": {
+            "gap": 4
+          },
+          "children": [
+            {
+              "id": "inv-head-col",
+              "type": "column",
+              "props": {
+                "span": 12
+              },
+              "children": [
+                {
+                  "id": "inv-title",
+                  "type": "heading",
+                  "props": {
+                    "eyebrow": "Inventory",
+                    "text": "Featured Listings",
+                    "headingLevel": 2
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "inv-list",
+          "type": "widget",
+          "props": {
+            "widget": "inventory-carousel",
+            "config": {
+              "limit": 4
+            }
+          }
+        },
+        {
+          "id": "inv-more",
+          "type": "buttons",
+          "props": {
+            "items": [
+              {
+                "ctaId": "view-all-inventory"
+              }
+            ],
+            "align": "left"
+          }
+        }
+      ]
+    },
+    {
+      "id": "about",
+      "type": "section",
+      "props": {
+        "width": "boxed",
+        "paddingY": 10,
+        "background": "ink",
+        "anchor": "about"
+      },
+      "children": [
+        {
+          "id": "about-title",
+          "type": "heading",
+          "props": {
+            "eyebrow": "Why Sun State",
+            "text": "What We Offer",
+            "headingLevel": 2,
+            "align": "center"
+          }
+        },
+        {
+          "id": "about-band",
+          "type": "statBand",
+          "props": {
+            "stats": [
+              {
+                "value": "180+",
+                "label": "Service Technicians"
+              },
+              {
+                "value": "250+",
+                "label": "Service Bays"
+              },
+              {
+                "value": "50",
+                "label": "Parts Delivery Vehicles"
+              },
+              {
+                "value": "12+",
+                "label": "Certified FDOE Bus Safety Inspectors"
+              },
+              {
+                "value": "AC",
+                "label": "Factory Trained AC Technicians"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "service",
+      "type": "section",
+      "props": {
+        "width": "boxed",
+        "paddingY": 9,
+        "background": "card",
+        "anchor": "service"
+      },
+      "children": [
+        {
+          "id": "sp-row",
+          "type": "row",
+          "props": {
+            "gap": 8,
+            "align": "start",
+            "stackOn": "tablet"
+          },
+          "children": [
+            {
+              "id": "sp-service",
+              "type": "column",
+              "props": {
+                "span": 6
+              },
+              "children": [
+                {
+                  "id": "sp-service-img",
+                  "type": "image",
+                  "props": {
+                    "image": {
+                      "src": "/images/service-bus.jpg",
+                      "alt": "IC Bus school bus with its stop arm extended"
+                    },
+                    "width": "full"
+                  }
+                },
+                {
+                  "id": "sp-service-h",
+                  "type": "heading",
+                  "props": {
+                    "eyebrow": "Service Center",
+                    "text": "Certified Maintenance & Repair",
+                    "headingLevel": 2
+                  }
+                },
+                {
+                  "id": "sp-service-t",
+                  "type": "text",
+                  "props": {
+                    "text": "Factory-trained technicians, genuine parts, and same-week appointments to keep your fleet on the road longer.",
+                    "width": "full"
+                  }
+                },
+                {
+                  "id": "sp-service-cta",
+                  "type": "buttons",
+                  "props": {
+                    "items": [
+                      {
+                        "ctaId": "schedule-service"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "id": "sp-parts",
+              "type": "column",
+              "props": {
+                "span": 6,
+                "anchor": "parts"
+              },
+              "children": [
+                {
+                  "id": "sp-parts-img",
+                  "type": "image",
+                  "props": {
+                    "image": {
+                      "src": "/images/parts-bus.jpg",
+                      "alt": "Fleet of school buses parked in a row"
+                    },
+                    "width": "full"
+                  }
+                },
+                {
+                  "id": "sp-parts-h",
+                  "type": "heading",
+                  "props": {
+                    "eyebrow": "Parts Department",
+                    "text": "OEM Parts, In Stock",
+                    "headingLevel": 2
+                  }
+                },
+                {
+                  "id": "sp-parts-t",
+                  "type": "text",
+                  "props": {
+                    "text": "Order online or call our parts desk. Most in-stock orders ship same day.",
+                    "width": "full"
+                  }
+                },
+                {
+                  "id": "sp-parts-cta",
+                  "type": "buttons",
+                  "props": {
+                    "items": [
+                      {
+                        "ctaId": "order-parts"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "financing",
+      "type": "section",
+      "props": {
+        "width": "wide",
+        "paddingY": 8,
+        "background": "accent",
+        "anchor": "financing"
+      },
+      "children": [
+        {
+          "id": "fin-row",
+          "type": "row",
+          "props": {
+            "gap": 6,
+            "align": "center",
+            "stackOn": "mobile"
+          },
+          "children": [
+            {
+              "id": "fin-copy",
+              "type": "column",
+              "props": {
+                "span": 8
+              },
+              "children": [
+                {
+                  "id": "fin-h",
+                  "type": "heading",
+                  "props": {
+                    "text": "Flexible Fleet Financing",
+                    "headingLevel": 2
+                  }
+                },
+                {
+                  "id": "fin-t",
+                  "type": "text",
+                  "props": {
+                    "text": "Competitive rates on new and used buses, tailored to single-route operators and district fleets alike.",
+                    "width": "full"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "fin-cta",
+              "type": "column",
+              "props": {
+                "span": 4,
+                "align": "end"
+              },
+              "children": [
+                {
+                  "id": "fin-btn",
+                  "type": "buttons",
+                  "props": {
+                    "items": [
+                      {
+                        "ctaId": "get-pre-qualified"
+                      }
+                    ],
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "testimonials",
+      "type": "sharedSection",
+      "props": {
+        "sectionId": "quote-rotator",
+        "values": {
+          "eyebrow": "Customers",
+          "heading": "What Fleet Owners Say",
+          "quotes": [
+            {
+              "quote": "They kept three of our buses down for less than 48 hours combined all year. That's the difference a good service team makes.",
+              "name": "Marcus Webb",
+              "role": "Transportation Director, Hillsborough County"
+            },
+            {
+              "quote": "Financing was straightforward and the team walked us through every option for our first electric CE Series.",
+              "name": "Dana Ortiz",
+              "role": "Fleet Manager, Ortiz Student Transport"
+            },
+            {
+              "quote": "Parts counter always has what we need in stock, or it ships next day. Huge for uptime.",
+              "name": "Ray Callahan",
+              "role": "Operations Lead, Callahan Charter"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "locations",
+      "type": "section",
+      "props": {
+        "width": "boxed",
+        "paddingY": 10,
+        "background": "paper",
+        "anchor": "locations"
+      },
+      "children": [
+        {
+          "id": "loc-head",
+          "type": "row",
+          "props": {
+            "gap": 4
+          },
+          "children": [
+            {
+              "id": "loc-head-col",
+              "type": "column",
+              "props": {
+                "span": 12
+              },
+              "children": [
+                {
+                  "id": "loc-title",
+                  "type": "heading",
+                  "props": {
+                    "eyebrow": "Locations",
+                    "text": "Find a Location",
+                    "headingLevel": 2
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "loc-finder",
+          "type": "location-finder",
+          "props": {
+            "behaviour": "filter",
+            "behaviourOptions": "{\"match\":\"exact\"}",
+            "departmentsLabel": "Filter by department",
+            "statesLabel": "Filter by state",
+            "departments": [
+              {
+                "label": "All",
+                "value": "all"
+              },
+              {
+                "label": "Sales",
+                "value": "sales"
+              },
+              {
+                "label": "Parts",
+                "value": "parts"
+              },
+              {
+                "label": "Service",
+                "value": "service"
+              }
+            ],
+            "states": [
+              {
+                "label": "All",
+                "value": "all"
+              },
+              {
+                "label": "FL",
+                "value": "FL"
+              },
+              {
+                "label": "AL",
+                "value": "AL"
+              }
+            ],
+            "locations": [
+              {
+                "name": "Sun State International",
+                "address": "41609 Hwy. 27, Davenport, FL 33837",
+                "phone": "(863) 852-1383",
+                "state": "FL",
+                "sales": true,
+                "parts": true,
+                "service": true,
+                "directions": "https://www.google.com/maps/search/?api=1&query=41609%20Hwy.%2027%2C%20Davenport%2C%20FL%2033837"
+              },
+              {
+                "name": "Cumberland International",
+                "address": "739 Fentress Blvd., Daytona Beach, FL 32114",
+                "phone": "(386) 254-7207",
+                "state": "FL",
+                "sales": false,
+                "parts": true,
+                "service": true,
+                "directions": "https://www.google.com/maps/search/?api=1&query=739%20Fentress%20Blvd.%2C%20Daytona%20Beach%2C%20FL%2032114"
+              },
+              {
+                "name": "Coffman International",
+                "address": "4185 Ross Clark Cir., Dothan, AL 36303",
+                "phone": "(334) 794-4111",
+                "state": "AL",
+                "sales": false,
+                "parts": true,
+                "service": true,
+                "directions": "https://www.google.com/maps/search/?api=1&query=4185%20Ross%20Clark%20Cir.%2C%20Dothan%2C%20AL%2036303"
+              },
+              {
+                "name": "Rechtien International",
+                "address": "2565 State Rd. 84, Fort Lauderdale, FL 33312",
+                "phone": "(954) 957-8390",
+                "state": "FL",
+                "sales": false,
+                "parts": true,
+                "service": true,
+                "directions": "https://www.google.com/maps/search/?api=1&query=2565%20State%20Rd.%2084%2C%20Fort%20Lauderdale%2C%20FL%2033312"
+              },
+              {
+                "name": "Rechtien International",
+                "address": "2761 Edison Ave., Fort Myers, FL 33916",
+                "phone": "(239) 334-1000",
+                "state": "FL",
+                "sales": false,
+                "parts": true,
+                "service": true,
+                "directions": "https://www.google.com/maps/search/?api=1&query=2761%20Edison%20Ave.%2C%20Fort%20Myers%2C%20FL%2033916"
+              },
+              {
+                "name": "Rechtien International",
+                "address": "1699 North U.S. 1, Fort Pierce, FL 34950",
+                "phone": "(772) 466-1842",
+                "state": "FL",
+                "sales": false,
+                "parts": true,
+                "service": true,
+                "directions": "https://www.google.com/maps/search/?api=1&query=1699%20North%20U.S.%201%2C%20Fort%20Pierce%2C%20FL%2034950"
+              },
+              {
+                "name": "Cumberland International",
+                "address": "1881 Pickettville Rd., Jacksonville, FL 32220",
+                "phone": "(904) 783-9822",
+                "state": "FL",
+                "sales": false,
+                "parts": true,
+                "service": true,
+                "directions": "https://www.google.com/maps/search/?api=1&query=1881%20Pickettville%20Rd.%2C%20Jacksonville%2C%20FL%2032220"
+              },
+              {
+                "name": "Rechtien International",
+                "address": "7227 NW 74th Ave., Miami, FL 33166",
+                "phone": "(305) 888-0111",
+                "state": "FL",
+                "sales": false,
+                "parts": true,
+                "service": true,
+                "directions": "https://www.google.com/maps/search/?api=1&query=7227%20NW%2074th%20Ave.%2C%20Miami%2C%20FL%2033166"
+              },
+              {
+                "name": "Cumberland International",
+                "address": "5221 Hwy 40 West, Ocala, FL 34482",
+                "phone": "(352) 732-8151",
+                "state": "FL",
+                "sales": false,
+                "parts": true,
+                "service": true,
+                "directions": "https://www.google.com/maps/search/?api=1&query=5221%20Hwy%2040%20West%2C%20Ocala%2C%20FL%2034482"
+              },
+              {
+                "name": "Cumberland International",
+                "address": "2110 South Division Ave., Orlando, FL 32805",
+                "phone": "(407) 849-6440",
+                "state": "FL",
+                "sales": false,
+                "parts": true,
+                "service": true,
+                "directions": "https://www.google.com/maps/search/?api=1&query=2110%20South%20Division%20Ave.%2C%20Orlando%2C%20FL%2032805"
+              },
+              {
+                "name": "Cumberland International",
+                "address": "1875 Robert J. Conlan Blvd., Palm Bay, FL 32905",
+                "phone": "(321) 984-2899",
+                "state": "FL",
+                "sales": false,
+                "parts": true,
+                "service": true,
+                "directions": "https://www.google.com/maps/search/?api=1&query=1875%20Robert%20J.%20Conlan%20Blvd.%2C%20Palm%20Bay%2C%20FL%2032905"
+              },
+              {
+                "name": "Ward International",
+                "address": "5885 North \"W\" St., Pensacola, FL 32505",
+                "phone": "(850) 474-9301",
+                "state": "FL",
+                "sales": false,
+                "parts": true,
+                "service": true,
+                "directions": "https://www.google.com/maps/search/?api=1&query=5885%20North%20%22W%22%20St.%2C%20Pensacola%2C%20FL%2032505"
+              },
+              {
+                "name": "Rechtien International",
+                "address": "3787 Interstate Pk. Rd. North, Riviera Beach, FL 33404",
+                "phone": "(561) 882-9050",
+                "state": "FL",
+                "sales": false,
+                "parts": true,
+                "service": true,
+                "directions": "https://www.google.com/maps/search/?api=1&query=3787%20Interstate%20Pk.%20Rd.%20North%2C%20Riviera%20Beach%2C%20FL%2033404"
+              },
+              {
+                "name": "Sun State International",
+                "address": "1000 Sarasota Center Blvd., Sarasota, FL 34240",
+                "phone": "(941) 256-3797",
+                "state": "FL",
+                "sales": true,
+                "parts": true,
+                "service": true,
+                "directions": "https://www.google.com/maps/search/?api=1&query=1000%20Sarasota%20Center%20Blvd.%2C%20Sarasota%2C%20FL%2034240"
+              },
+              {
+                "name": "Ward International",
+                "address": "3101 Commonwealth Blvd., Tallahassee, FL 32303",
+                "phone": "(850) 701-0111",
+                "state": "FL",
+                "sales": false,
+                "parts": true,
+                "service": true,
+                "directions": "https://www.google.com/maps/search/?api=1&query=3101%20Commonwealth%20Blvd.%2C%20Tallahassee%2C%20FL%2032303"
+              },
+              {
+                "name": "Sun State International",
+                "address": "6020 Adamo Dr., Tampa, FL 33619",
+                "phone": "(813) 519-0125",
+                "state": "FL",
+                "sales": true,
+                "parts": true,
+                "service": true,
+                "directions": "https://www.google.com/maps/search/?api=1&query=6020%20Adamo%20Dr.%2C%20Tampa%2C%20FL%2033619"
+              },
+              {
+                "name": "Sun State International",
+                "address": "7105 6th Ave., Tampa, FL 33619",
+                "phone": "(813) 627-3282",
+                "state": "FL",
+                "sales": true,
+                "parts": true,
+                "service": true,
+                "directions": "https://www.google.com/maps/search/?api=1&query=7105%206th%20Ave.%2C%20Tampa%2C%20FL%2033619"
+              }
+            ],
+            "countLabel": "Locations: {n}",
+            "emptyText": "No locations match these filters."
+          }
+        }
+      ]
+    },
+    {
+      "id": "blog",
+      "type": "section",
+      "props": {
+        "width": "boxed",
+        "paddingY": 10,
+        "background": "ink",
+        "anchor": "blog"
+      },
+      "children": [
+        {
+          "id": "blog-list",
+          "type": "postsList",
+          "props": {
+            "heading": "From the Road Ahead",
+            "headingLevel": 2,
+            "count": 3,
+            "showDates": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "contact",
+      "type": "section",
+      "props": {
+        "width": "boxed",
+        "paddingY": 9,
+        "background": "card",
+        "anchor": "contact"
+      },
+      "children": [
+        {
+          "id": "contact-row",
+          "type": "row",
+          "props": {
+            "gap": 8,
+            "align": "start",
+            "stackOn": "tablet"
+          },
+          "children": [
+            {
+              "id": "contact-form-col",
+              "type": "column",
+              "props": {
+                "span": 7
+              },
+              "children": [
+                {
+                  "id": "contact-h",
+                  "type": "heading",
+                  "props": {
+                    "eyebrow": "Get In Touch",
+                    "text": "Talk to Our Team",
+                    "headingLevel": 2
+                  }
+                },
+                {
+                  "id": "contact-t",
+                  "type": "text",
+                  "props": {
+                    "text": "Questions about inventory, service, or financing? Send a message and we'll respond within one business day."
+                  }
+                },
+                {
+                  "id": "contact-form",
+                  "type": "form",
+                  "props": {
+                    "formId": "contact"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "subscribe-col",
+              "type": "column",
+              "props": {
+                "span": 5,
+                "background": "paper",
+                "padding": 6
+              },
+              "children": [
+                {
+                  "id": "subscribe-form",
+                  "type": "form",
+                  "props": {
+                    "formId": "fleet-updates",
+                    "heading": "Fleet Updates & Offers",
+                    "headingLevel": 3,
+                    "intro": "Subscribe for new inventory alerts and service specials."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

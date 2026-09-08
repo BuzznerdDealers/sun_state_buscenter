@@ -1,0 +1,48 @@
+{
+  "id": "social-links",
+  "label": "Social links",
+  "category": "content",
+  "description": "A row of social profile icons. Used in the utility bar and the footer.",
+  "props": [
+    {
+      "key": "links",
+      "type": "list",
+      "label": "Profiles",
+      "fields": [
+        {
+          "key": "label",
+          "type": "text",
+          "label": "Network"
+        },
+        {
+          "key": "url",
+          "type": "url",
+          "label": "Profile URL"
+        },
+        {
+          "key": "icon",
+          "type": "image",
+          "label": "Icon"
+        }
+      ]
+    },
+    {
+      "key": "size",
+      "type": "select",
+      "label": "Icon size",
+      "default": "sm",
+      "options": [
+        {
+          "value": "sm",
+          "label": "Small (utility bar)"
+        },
+        {
+          "value": "md",
+          "label": "Medium (footer)"
+        }
+      ]
+    }
+  ],
+  "html": "<div class=\"sl sl--{{size}}\">{{#each links}}<a class=\"sl__link\" href=\"{{link url}}\" aria-label=\"{{label}}\" data-bz-el=\"link\" data-bz-intent=\"social\"><img class=\"sl__icon\" src=\"{{icon}}\" alt=\"\" loading=\"lazy\" width=\"18\" height=\"18\"></a>{{/each}}</div>",
+  "css": ":root{display:flex;align-items:center;gap:var(--space-4)}\n.sl{display:flex;align-items:center;gap:var(--space-4)}\n.sl__link{display:flex;width:16px;height:16px;opacity:.85}\n.sl__link:hover{opacity:1}\n.sl--md .sl__link{width:18px;height:18px}\n.sl__icon{width:100%;height:100%;display:block}"
+}

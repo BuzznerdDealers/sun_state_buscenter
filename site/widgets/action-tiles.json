@@ -1,0 +1,32 @@
+{
+  "id": "action-tiles",
+  "label": "Action tiles",
+  "category": "content",
+  "description": "The hero shortcut tiles — an icon, a label and a chevron per tile.",
+  "props": [
+    {
+      "key": "tiles",
+      "type": "list",
+      "label": "Tiles",
+      "fields": [
+        {
+          "key": "label",
+          "type": "text",
+          "label": "Label"
+        },
+        {
+          "key": "url",
+          "type": "url",
+          "label": "Destination"
+        },
+        {
+          "key": "icon",
+          "type": "image",
+          "label": "Icon"
+        }
+      ]
+    }
+  ],
+  "html": "<div class=\"at\">{{#each tiles}}<a class=\"at__tile\" href=\"{{link url}}\" data-bz-el=\"link\" data-bz-intent=\"quick-link\"><span class=\"at__icon\" aria-hidden=\"true\"><img src=\"{{icon}}\" alt=\"\" loading=\"lazy\" width=\"20\" height=\"20\"></span><span class=\"at__label\">{{label}}</span><span class=\"at__chevron\" aria-hidden=\"true\">&#8594;</span></a>{{/each}}</div>",
+  "css": ".at{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-4)}\n.at__tile{display:flex;align-items:center;gap:var(--space-3);min-width:190px;padding:18px var(--space-5);background:var(--card);border-radius:var(--radius-input);text-decoration:none;transition:background-color .15s ease}\n.at__tile:hover{background:var(--paper)}\n.at__icon{display:flex;align-items:center;justify-content:center;width:38px;height:38px;flex-shrink:0;border-radius:var(--radius-nav);background:var(--accent)}\n.at__icon img{width:20px;height:20px;display:block}\n.at__label{flex:1;font-family:var(--font-heading);font-weight:700;font-size:var(--text-body);color:var(--ink)}\n.at__chevron{color:var(--ink);font-size:var(--text-body)}\n@media (max-width:640px){.at{grid-template-columns:1fr}.at__tile{min-width:0}}"
+}

@@ -1,0 +1,47 @@
+{
+  "slug": "training-the-next-generation-of-techs",
+  "title": "Training the Next Generation: How Sun State Invests in Its Techs",
+  "date": "2026-07-02",
+  "description": "Behind the 180 technicians and 250 service bays: how apprenticeships, factory certification and AC training keep Florida's buses moving.",
+  "coverImage": "/images/blog-bus-3.jpg",
+  "status": "published",
+  "nodes": [
+    {
+      "id": "tr-lede",
+      "type": "text",
+      "props": {
+        "text": "A service network is only as good as the people in the bays. Ours runs 180 technicians across 17 locations, and most of them were trained here rather than hired away from somewhere else."
+      }
+    },
+    {
+      "id": "tr-h1",
+      "type": "heading",
+      "props": {
+        "text": "The apprenticeship",
+        "headingLevel": 2
+      }
+    },
+    {
+      "id": "tr-t1",
+      "type": "text",
+      "props": {
+        "text": "New technicians start paired with a certified lead on preventive maintenance work, then move through brakes, electrical and HVAC as they certify. Nobody signs off an FDOE safety inspection until they have completed the state inspector programme — we currently hold 12 certified inspectors across the network."
+      }
+    },
+    {
+      "id": "tr-h2",
+      "type": "heading",
+      "props": {
+        "text": "Why AC gets its own track",
+        "headingLevel": 2
+      }
+    },
+    {
+      "id": "tr-t2",
+      "type": "text",
+      "props": {
+        "text": "In Florida, air conditioning is not a comfort item — a bus with a dead compressor in May is a bus that is out of service. That is why we run a separate factory-trained AC track, and why we stock compressors and evaporators rather than ordering them when they fail.\n\nInterested in the apprenticeship? Our careers team would like to hear from you."
+      }
+    }
+  ]
+}

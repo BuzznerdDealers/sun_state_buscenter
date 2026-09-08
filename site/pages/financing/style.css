@@ -1,0 +1,130 @@
+/* ==========================================================================
+   Financing & Warranty — the interior-page pattern: a short banner hero and
+   a 1000px reading column.
+   ========================================================================== */
+
+[data-bz-node="banner"]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(20, 17, 14, .72) 0%, rgba(20, 17, 14, .9) 100%);
+}
+[data-bz-node="banner"] > .bz-container { position: relative; z-index: 1; }
+[data-bz-node="banner-title"] h1 { color: #fff; font-size: var(--text-h2); }
+
+/* The reading measure. Interior copy is 1000px wide, not the full container. */
+[data-bz-node="intro"] > .bz-container,
+[data-bz-node="warranty"] > .bz-container,
+[data-bz-node="warranty-ctas"] > .bz-container,
+[data-bz-node="partnership"] > .bz-container { max-width: 1000px; }
+[data-bz-node="intro-text"] p { font-size: 17px; }
+
+/* --- The eight numbered benefit cards ------------------------------------
+   One `list` block, so the dealer edits eight rows rather than eight
+   subtrees. The numbering is a CSS counter — it stays correct when a row is
+   added, removed or reordered on the canvas. */
+[data-bz-node="warranty-benefits"] .bz-grid { counter-reset: benefit; gap: var(--space-5); }
+[data-bz-node="warranty-benefits"] .bz-feature {
+  counter-increment: benefit;
+  position: relative;
+  padding: var(--space-6) var(--space-7);
+  padding-left: 76px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+}
+[data-bz-node="warranty-benefits"] .bz-feature::before {
+  content: counter(benefit, decimal-leading-zero);
+  position: absolute;
+  left: var(--space-6);
+  top: var(--space-6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-nav);
+  background: var(--accent);
+  color: var(--ink-dark);
+  font: 700 var(--text-small) / 1 var(--font-heading);
+}
+[data-bz-node="warranty-benefits"] .bz-feature__t { font-size: 16.5px; }
+[data-bz-node="warranty-benefits"] .bz-feature__d { line-height: 1.65; }
+
+/* --- Warranty CTA cards --------------------------------------------------- */
+[data-bz-node="warranty-cta-grid"] { padding-block: 0; background: none; }
+[data-bz-node="warranty-cta-grid"] h2 { text-align: center; font-size: 26px; margin-bottom: var(--space-7); }
+[data-bz-node="warranty-cta-grid"] .bz-service {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: 28px 26px;
+  border: 1px solid rgba(255, 255, 255, .14);
+}
+[data-bz-node="warranty-cta-grid"] .bz-service__d { flex: 1; }
+[data-bz-node="warranty-cta-grid"] .bz-btn { align-self: flex-start; }
+
+/* --- Partnership promo card ---------------------------------------------- */
+[data-bz-node="promo-card"] { border-radius: var(--radius-modal); }
+[data-bz-node="promo-h"] h2 { font-size: 26px; }
+[data-bz-node="promo-t"] p { max-width: 640px; }
+[data-bz-node="promo-split"] {
+  padding-block: 28px;
+  margin-block: 28px;
+  border-top: 1px solid rgba(255, 255, 255, .14);
+  border-bottom: 1px solid rgba(255, 255, 255, .14);
+}
+[data-bz-node="promo-seal-band"] { padding-block: 0; background: none; }
+[data-bz-node="promo-seal-band"] .bz-band { grid-template-columns: 1fr; gap: 0; }
+[data-bz-node="promo-seal-band"] .bz-stats { grid-template-columns: 1fr; }
+[data-bz-node="promo-seal-band"] .bz-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 96px;
+  height: 96px;
+  padding: 0;
+  border-left: 0;
+  border-radius: var(--radius-chip);
+  background: var(--accent);
+  text-align: center;
+}
+[data-bz-node="promo-seal-band"] .bz-stat__v { font-size: 22px; color: var(--ink-dark); }
+[data-bz-node="promo-seal-band"] .bz-stat__l {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--ink-dark);
+  line-height: 1.1;
+}
+[data-bz-node="promo-detail-h"] h3 { font-size: 19px; color: #fff; }
+
+[data-bz-node="promo-checklist"] .bz-feature { display: flex; align-items: center; gap: 10px; }
+[data-bz-node="promo-checklist"] .bz-feature::before {
+  content: "\2713";
+  color: var(--accent);
+  font-size: var(--text-body);
+}
+[data-bz-node="promo-checklist"] .bz-feature__t { margin: 0; font-size: var(--text-small); color: #fff; }
+[data-bz-node="promo-foot"] p { margin-top: 28px; font-size: 13px; color: rgba(255, 255, 255, .6); }
+
+/* --- Apply today ---------------------------------------------------------- */
+[data-bz-node="apply-img"] img {
+  width: 100%;
+  min-height: 320px;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-modal);
+}
+[data-bz-node="apply-h"] h2 { font-size: 30px; }
+[data-bz-node="apply-cta"] .bz-btn { min-height: 58px; padding-inline: 40px; text-transform: uppercase; }
+
+@media (max-width: 640px) {
+  [data-bz-node="warranty-benefits"] .bz-feature { padding: var(--space-5); padding-top: 64px; }
+  [data-bz-node="warranty-benefits"] .bz-feature::before { left: var(--space-5); top: var(--space-5); }
+  [data-bz-node="promo-card"] { --bz-col-pad: var(--space-6); }
+}
+
+[data-bz-node="warranty-cta-grid"] .bz-service__t { font-size: 18px; }
+[data-bz-node="warranty-cta-grid"] .bz-service__d { font-size: 13.5px; line-height: 1.6; }

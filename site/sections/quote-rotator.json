@@ -1,0 +1,185 @@
+{
+  "version": 2,
+  "id": "quote-rotator",
+  "name": "Testimonial rotator",
+  "props": [
+    {
+      "key": "eyebrow",
+      "type": "text",
+      "label": "Eyebrow",
+      "default": "Customers"
+    },
+    {
+      "key": "heading",
+      "type": "text",
+      "label": "Heading",
+      "default": "What Fleet Owners Say"
+    },
+    {
+      "key": "quotes",
+      "type": "list",
+      "label": "Testimonials",
+      "fields": [
+        {
+          "key": "quote",
+          "type": "textarea",
+          "label": "Quote"
+        },
+        {
+          "key": "name",
+          "type": "text",
+          "label": "Name"
+        },
+        {
+          "key": "role",
+          "type": "text",
+          "label": "Role"
+        }
+      ]
+    }
+  ],
+  "css": "[data-bz-section=\"quote-rotator\"] [data-bz-node=\"qr-inner\"] { max-width: 900px; margin-inline: auto; text-align: center }\n[data-bz-section=\"quote-rotator\"] [data-bz-node=\"qr-title\"] { margin-bottom: var(--space-6) }\n[data-bz-section=\"quote-rotator\"] [data-bz-node^=\"qr-slide\"] { min-height: 150px }\n[data-bz-section=\"quote-rotator\"] [data-bz-node^=\"qr-quote\"] p { font-size: 20px; line-height: 1.6; font-style: italic; color: var(--ink); margin: 0 0 var(--space-5) }\n[data-bz-section=\"quote-rotator\"] [data-bz-node^=\"qr-name\"] p { font-family: var(--font-heading); font-weight: 700; font-size: var(--text-body); color: var(--ink); margin: 0 }\n[data-bz-section=\"quote-rotator\"] [data-bz-node^=\"qr-role\"] p { font-size: var(--text-small); color: var(--muted); margin: 0 }\n[data-bz-section=\"quote-rotator\"] [data-bz-node=\"qr-controls\"] { display: flex; align-items: center; justify-content: center; gap: var(--space-5); margin-top: var(--space-6) }\n[data-bz-section=\"quote-rotator\"] [data-bz-node=\"qr-controls\"] > .bz-col { width: auto; flex: 0 0 auto }\n[data-bz-section=\"quote-rotator\"] [data-bz-node=\"qr-controls\"] .bz-btns { margin-block: 0 }\n[data-bz-section=\"quote-rotator\"] [data-bz-node=\"qr-controls\"] .bz-btn { width: 40px; height: 40px; min-height: 40px; padding: 0; overflow: hidden; text-indent: -999px; border-radius: var(--radius-chip); background: var(--card); border: 1px solid var(--line); position: relative }\n[data-bz-section=\"quote-rotator\"] [data-bz-node=\"qr-prev\"] .bz-btn::after,\n[data-bz-section=\"quote-rotator\"] [data-bz-node=\"qr-next\"] .bz-btn::after { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; text-indent: 0; color: var(--ink); font-size: var(--text-body) }\n[data-bz-section=\"quote-rotator\"] [data-bz-node=\"qr-prev\"] .bz-btn::after { content: \"\\2039\" }\n[data-bz-section=\"quote-rotator\"] [data-bz-node=\"qr-next\"] .bz-btn::after { content: \"\\203A\" }\n[data-bz-section=\"quote-rotator\"] [data-bz-node=\"qr-dots\"] { display: flex; gap: var(--space-2); align-items: center }\n[data-bz-section=\"quote-rotator\"] .bz-dot { width: 8px; height: 8px; padding: 0; border: 0; border-radius: var(--radius-chip); background: var(--line); cursor: pointer }\n[data-bz-section=\"quote-rotator\"] .bz-dot[aria-current=\"true\"] { background: var(--accent-dark) }",
+  "nodes": [
+    {
+      "id": "qr",
+      "type": "section",
+      "props": {
+        "width": "boxed",
+        "background": "card",
+        "paddingY": 9,
+        "behaviour": "rotator",
+        "behaviourOptions": "{\"autoplay\":8000}"
+      },
+      "children": [
+        {
+          "id": "qr-inner",
+          "type": "row",
+          "props": {
+            "gap": 0
+          },
+          "children": [
+            {
+              "id": "qr-headcol",
+              "type": "column",
+              "props": {
+                "span": 12
+              },
+              "children": [
+                {
+                  "id": "qr-title",
+                  "type": "heading",
+                  "props": {
+                    "eyebrow": "{{eyebrow}}",
+                    "text": "{{heading}}",
+                    "headingLevel": 2,
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "qr-slide",
+              "type": "column",
+              "props": {
+                "span": 12,
+                "repeat": "quotes",
+                "part": "slide"
+              },
+              "children": [
+                {
+                  "id": "qr-quote",
+                  "type": "text",
+                  "props": {
+                    "text": "“{{quote}}”",
+                    "align": "center",
+                    "width": "full"
+                  }
+                },
+                {
+                  "id": "qr-name",
+                  "type": "text",
+                  "props": {
+                    "text": "{{name}}",
+                    "align": "center",
+                    "width": "full"
+                  }
+                },
+                {
+                  "id": "qr-role",
+                  "type": "text",
+                  "props": {
+                    "text": "{{role}}",
+                    "align": "center",
+                    "width": "full"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "qr-controls",
+          "type": "row",
+          "props": {
+            "gap": 4,
+            "align": "center"
+          },
+          "children": [
+            {
+              "id": "qr-prev",
+              "type": "column",
+              "props": {
+                "span": 2,
+                "part": "prev"
+              },
+              "children": [
+                {
+                  "id": "qr-prev-btn",
+                  "type": "buttons",
+                  "props": {
+                    "items": [
+                      {
+                        "ctaId": "quote-prev"
+                      }
+                    ],
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "qr-dots",
+              "type": "column",
+              "props": {
+                "span": 8,
+                "part": "dots"
+              }
+            },
+            {
+              "id": "qr-next",
+              "type": "column",
+              "props": {
+                "span": 2,
+                "part": "next"
+              },
+              "children": [
+                {
+                  "id": "qr-next-btn",
+                  "type": "buttons",
+                  "props": {
+                    "items": [
+                      {
+                        "ctaId": "quote-next"
+                      }
+                    ],
+                    "align": "center"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

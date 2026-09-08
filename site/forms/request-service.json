@@ -1,0 +1,47 @@
+{
+  "id": "request-service",
+  "name": "Schedule service",
+  "status": "live",
+  "surfaces": ["pdp", "page", "blog"],
+  "intent": "book-service",
+  "submitLabel": "Request an appointment",
+  "successMessage": "Thanks — a service advisor will confirm your appointment window.",
+  "consent": {
+    "enabled": true,
+    "required": true,
+    "text": "I agree to be contacted about this service request by phone, text or email."
+  },
+  "fields": [
+    { "id": "rs-name", "type": "full_name", "label": "Full name", "required": true },
+    { "id": "rs-company", "type": "single_line", "label": "District or company", "required": false },
+    { "id": "rs-email", "type": "email", "label": "Email", "required": true },
+    { "id": "rs-phone", "type": "phone", "label": "Phone", "required": true },
+    { "id": "rs-unit", "type": "single_line", "label": "Bus model or VIN", "required": false },
+    {
+      "id": "rs-work",
+      "type": "dropdown",
+      "label": "What does it need?",
+      "required": true,
+      "options": [
+        { "value": "inspection", "label": "FDOE safety inspection" },
+        { "value": "maintenance", "label": "Scheduled maintenance" },
+        { "value": "ac", "label": "Air conditioning" },
+        { "value": "bodywork", "label": "Body & collision" },
+        { "value": "diagnostic", "label": "Diagnostics / repair" }
+      ]
+    },
+    { "id": "rs-date", "type": "date", "label": "Preferred date", "required": false },
+    { "id": "rs-notes", "type": "paragraph", "label": "Anything else we should know?", "required": false }
+  ],
+  "notifications": [
+    {
+      "id": "rs-advisor",
+      "name": "Service advisors",
+      "logic": "AND",
+      "rules": [],
+      "targetType": "role",
+      "roleId": "service-advisor",
+      "scopeMode": "dynamic"
+    }
+  ]
+}

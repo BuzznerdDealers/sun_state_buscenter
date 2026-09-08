@@ -1,0 +1,263 @@
+{
+  "version": 2,
+  "id": "default",
+  "name": "Site template",
+  "conditions": [
+    {
+      "type": "entireSite",
+      "ref": null
+    }
+  ],
+  "css": "/* --- Header ------------------------------------------------------------- */\n[data-bz-node=\"header\"] { position: relative; z-index: 20; background: var(--ink); }\n[data-bz-node=\"header-row\"] { align-items: center; }\n[data-bz-node=\"header-brand\"] img { height: 44px; width: auto; display: block; }\n[data-bz-node=\"header-nav\"] .bz-navitem > a { color: rgba(255,255,255,.88); font-family: var(--font-body); font-weight: 600; font-size: var(--text-small); letter-spacing: .01em; border-radius: var(--radius-nav); }\n[data-bz-node=\"header-nav\"] .bz-navitem > a:hover { color: #fff; background: rgba(255,255,255,.1); }\n[data-bz-node=\"header-nav\"] .bz-navitem > a[aria-current=\"page\"] { color: var(--accent); }\n[data-bz-node=\"header-cta\"] .bz-btns { margin-block: 0; justify-content: flex-end; }\n\n/* --- Back to top --------------------------------------------------------\n   Always visible rather than revealed after 600px: the design canvas runs no\n   site JS, and a button that only appears once a script has run cannot be\n   selected there. The scroll itself is still the platform's scrollstate. */\n[data-bz-node=\"totop\"] { position: fixed; inset: auto var(--space-6) var(--space-6) auto; z-index: 60; padding: 0; }\n[data-bz-node=\"totop\"] .bz-btns { margin-block: 0; }\n[data-bz-node=\"totop\"] .bz-btn { width: 46px; height: 46px; min-height: 46px; padding: 0; display: flex; align-items: center; justify-content: center; border-radius: var(--radius-chip); font-size: 18px; box-shadow: 0 8px 20px rgba(0,0,0,.2); }\n@media (max-width: 640px) { [data-bz-node=\"totop\"] { inset: auto var(--space-4) var(--space-4) auto; } }\n\n/* The nav collapses behind a hamburger at 1100px, so the header does not need\n   to stack: logo left, hamburger and CTA right, on one line. */\n@media (max-width: 1100px) {\n  [data-bz-node=\"header-row\"] { display: flex; flex-wrap: nowrap; align-items: center; column-gap: var(--space-3); }\n  [data-bz-node=\"header-row\"] > .bz-col { width: auto; flex: 0 0 auto; }\n  [data-bz-node=\"header-brand\"] { flex: 1 1 auto; min-width: 0; }\n  [data-bz-node=\"header-cta\"] .bz-btns { justify-content: flex-end; }\n}\n@media (max-width: 480px) {\n  [data-bz-node=\"header-brand\"] img { height: 34px; }\n  [data-bz-node=\"header-cta\"] .bz-btn { min-height: 40px; padding-inline: 12px; font-size: var(--text-eyebrow); }\n}\n",
+  "nodes": [
+    {
+      "id": "utility",
+      "type": "sharedSection",
+      "props": {
+        "sectionId": "utility-bar",
+        "values": {
+          "address": "6020 Adamo Drive, Tampa, FL 33619",
+          "socials": [
+            {
+              "label": "Facebook",
+              "url": "https://www.facebook.com/",
+              "icon": {
+                "src": "/images/icon-facebook-white.svg",
+                "alt": "Facebook"
+              }
+            },
+            {
+              "label": "Instagram",
+              "url": "https://www.instagram.com/",
+              "icon": {
+                "src": "/images/icon-instagram-white.svg",
+                "alt": "Instagram"
+              }
+            },
+            {
+              "label": "LinkedIn",
+              "url": "https://www.linkedin.com/",
+              "icon": {
+                "src": "/images/icon-linkedin-white.svg",
+                "alt": "LinkedIn"
+              }
+            },
+            {
+              "label": "Twitter",
+              "url": "https://twitter.com/",
+              "icon": {
+                "src": "/images/icon-twitter-white.svg",
+                "alt": "Twitter"
+              }
+            },
+            {
+              "label": "YouTube",
+              "url": "https://www.youtube.com/",
+              "icon": {
+                "src": "/images/icon-youtube-white.svg",
+                "alt": "YouTube"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "header",
+      "type": "section",
+      "props": {
+        "width": "wide",
+        "paddingY": 3,
+        "background": "ink",
+        "anchor": "top"
+      },
+      "children": [
+        {
+          "id": "header-row",
+          "type": "row",
+          "props": {
+            "gap": 5,
+            "align": "center",
+            "stackOn": "tablet"
+          },
+          "children": [
+            {
+              "id": "header-brand",
+              "type": "column",
+              "props": {
+                "span": 3
+              },
+              "children": [
+                {
+                  "id": "header-logo",
+                  "type": "logo",
+                  "props": {
+                    "image": {
+                      "src": "/images/sun-state-logo.png",
+                      "alt": "Sun State Bus Centers"
+                    },
+                    "text": "Sun State Bus Centers",
+                    "url": "/",
+                    "height": 44
+                  }
+                }
+              ]
+            },
+            {
+              "id": "header-nav",
+              "type": "column",
+              "props": {
+                "span": 6,
+                "align": "center"
+              },
+              "children": [
+                {
+                  "id": "main-nav",
+                  "type": "menu",
+                  "props": {
+                    "menuId": "main",
+                    "layout": "horizontal",
+                    "align": "center",
+                    "collapseOnMobile": true,
+                    "depth": 2
+                  }
+                }
+              ]
+            },
+            {
+              "id": "header-cta",
+              "type": "column",
+              "props": {
+                "span": 3,
+                "align": "center"
+              },
+              "children": [
+                {
+                  "id": "header-button",
+                  "type": "buttons",
+                  "props": {
+                    "items": [
+                      {
+                        "ctaId": "schedule-service"
+                      }
+                    ],
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "content",
+      "type": "contentArea",
+      "props": {
+        "label": "Page content"
+      }
+    },
+    {
+      "id": "footer",
+      "type": "sharedSection",
+      "props": {
+        "sectionId": "site-footer",
+        "values": {
+          "about": "Sun State Bus Centers is proud to be part of the IC Bus family of dealers as the IC Bus sales dealer for the state of Florida, offering sales, parts, and service. We're a division of Sun State International Trucks, an authorized franchise of International Truck & Engine Corporation, located in Tampa, Sarasota, and Davenport, Florida.",
+          "copyright": "© 2026 Sun State Bus Centers. All rights reserved.",
+          "legalMenu": "legal",
+          "logo": {
+            "src": "/images/sun-state-logo.png",
+            "alt": "Sun State Bus Centers"
+          },
+          "builtLogo": {
+            "src": "/images/buzznerd-logo-white-cropped.png",
+            "alt": "Built by BuzzNerd"
+          },
+          "builtUrl": "https://buzznerd.com",
+          "socials": [
+            {
+              "label": "Facebook",
+              "url": "https://www.facebook.com/",
+              "icon": {
+                "src": "/images/icon-facebook-white.svg",
+                "alt": "Facebook"
+              }
+            },
+            {
+              "label": "Instagram",
+              "url": "https://www.instagram.com/",
+              "icon": {
+                "src": "/images/icon-instagram-white.svg",
+                "alt": "Instagram"
+              }
+            },
+            {
+              "label": "LinkedIn",
+              "url": "https://www.linkedin.com/",
+              "icon": {
+                "src": "/images/icon-linkedin-white.svg",
+                "alt": "LinkedIn"
+              }
+            },
+            {
+              "label": "Twitter",
+              "url": "https://twitter.com/",
+              "icon": {
+                "src": "/images/icon-twitter-white.svg",
+                "alt": "Twitter"
+              }
+            },
+            {
+              "label": "YouTube",
+              "url": "https://www.youtube.com/",
+              "icon": {
+                "src": "/images/icon-youtube-white.svg",
+                "alt": "YouTube"
+              }
+            }
+          ],
+          "linkColumns": [
+            {
+              "heading": "Shop",
+              "menuId": "footer-shop"
+            },
+            {
+              "heading": "Support",
+              "menuId": "footer-support"
+            },
+            {
+              "heading": "Company",
+              "menuId": "footer-company"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "totop",
+      "type": "section",
+      "props": {
+        "width": "full",
+        "paddingY": 0,
+        "behaviour": "scrollstate",
+        "behaviourOptions": "{\"after\":600}"
+      },
+      "children": [
+        {
+          "id": "totop-btn",
+          "type": "buttons",
+          "props": {
+            "items": [
+              {
+                "ctaId": "back-to-top"
+              }
+            ],
+            "align": "center",
+            "part": "totop"
+          }
+        }
+      ]
+    }
+  ]
+}

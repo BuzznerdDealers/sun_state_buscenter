@@ -1,0 +1,44 @@
+{
+  "id": "finance-application",
+  "name": "Finance application",
+  "status": "live",
+  "surfaces": ["pdp", "page", "blog"],
+  "intent": "get-financing",
+  "submitLabel": "Apply Now",
+  "successMessage": "Thanks — our finance staff will contact you about your available options.",
+  "consent": {
+    "enabled": true,
+    "required": true,
+    "text": "I agree to be contacted about financing by phone, text or email. This is not a credit application and no credit check is run from this form."
+  },
+  "fields": [
+    { "id": "fa-name", "type": "full_name", "label": "Full name", "required": true },
+    { "id": "fa-company", "type": "single_line", "label": "District or company", "required": false },
+    { "id": "fa-email", "type": "email", "label": "Email", "required": true },
+    { "id": "fa-phone", "type": "phone", "label": "Phone", "required": true },
+    {
+      "id": "fa-condition",
+      "type": "radio",
+      "label": "New or used?",
+      "required": true,
+      "options": [
+        { "value": "new", "label": "New bus" },
+        { "value": "used", "label": "Used bus" }
+      ]
+    },
+    { "id": "fa-unit", "type": "single_line", "label": "Which bus are you financing?", "required": false },
+    { "id": "fa-amount", "type": "number", "label": "Approximate amount to finance ($)", "required": false },
+    { "id": "fa-notes", "type": "paragraph", "label": "Anything else we should know?", "required": false }
+  ],
+  "notifications": [
+    {
+      "id": "fa-finance",
+      "name": "Finance department",
+      "logic": "AND",
+      "rules": [],
+      "targetType": "role",
+      "roleId": "finance-manager",
+      "scopeMode": "dynamic"
+    }
+  ]
+}

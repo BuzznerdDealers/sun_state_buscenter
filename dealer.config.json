@@ -1,0 +1,40 @@
+{
+  "$schema": "./dealer.config.schema.json",
+  "contractVersion": "4.0.0",
+  "name": "Sun State Bus Centers",
+  "shortName": "Sun State",
+  "channelToken": "REPLACE_CHANNEL_TOKEN",
+  "domain": "REPLACE_CHANNEL_TOKEN.buzznerd.com",
+  "url": "https://REPLACE_CHANNEL_TOKEN.buzznerd.com",
+  "storefrontOrigin": "https://REPLACE_STOREFRONT_ORIGIN",
+  "storefrontPrefix": "store",
+  "logo": "/images/sun-state-logo.png",
+  "favicon": "/favicon.svg",
+  "analytics": {
+    "loaderUrl": null,
+    "loaderVersion": null
+  },
+  "business": {
+    "type": "AutoDealer",
+    "legalName": "Sun State Bus Centers",
+    "phone": "+1-800-741-7566",
+    "email": "sales@sunstatebuscenters.com",
+    "streetAddress": "6020 Adamo Drive",
+    "addressLocality": "Tampa",
+    "addressRegion": "FL",
+    "postalCode": "33619",
+    "addressCountry": "US",
+    "latitude": 27.9469,
+    "longitude": -82.3737,
+    "priceRange": "$$$",
+    "openingHours": ["Mo-Fr 07:00-17:30", "Sa 08:00-12:00"]
+  },
+  "seo": {
+    "defaultTitle": "Sun State Bus Centers | New & Used IC Bus Sales, Service & Parts",
+    "titleTemplate": "%s | Sun State Bus Centers",
+    "defaultDescription": "Sun State Bus Centers is the exclusive IC Bus sales, parts, and service dealer for the state of Florida. Shop new and used school buses, schedule certified service, and order OEM parts.",
+    "ogImage": "/images/hero-bus.jpg",
+    "locale": "en_US",
+    "themeColor": "#1A1714"
+  }
+}

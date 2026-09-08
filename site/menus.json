@@ -1,0 +1,72 @@
+{
+  "version": 3,
+  "menus": [
+    {
+      "id": "main",
+      "name": "Main navigation",
+      "items": [
+        {
+          "id": "inventory",
+          "label": "Inventory",
+          "type": "inventory",
+          "ref": "inventory",
+          "children": [
+            { "id": "inv-all", "label": "All Inventory", "type": "inventory", "ref": "inventory" },
+            { "id": "inv-new", "label": "New Buses", "type": "inventory", "ref": "inventory?condition=new" },
+            { "id": "inv-used", "label": "Used Buses", "type": "inventory", "ref": "inventory?condition=used" }
+          ]
+        },
+        { "id": "nav-service", "label": "Service", "type": "url", "url": "/#service" },
+        { "id": "nav-parts", "label": "Parts", "type": "url", "url": "/#parts" },
+        { "id": "nav-financing", "label": "Financing", "type": "page", "ref": "financing" },
+        { "id": "nav-locations", "label": "Locations", "type": "url", "url": "/#locations" },
+        { "id": "nav-contact", "label": "Contact", "type": "url", "url": "/#contact" }
+      ]
+    },
+    {
+      "id": "utility",
+      "name": "Utility bar links",
+      "items": [
+        { "id": "util-careers", "label": "Careers", "type": "url", "url": "/#careers" },
+        { "id": "util-about", "label": "About Us", "type": "url", "url": "/#about" },
+        { "id": "util-locations", "label": "17 Locations", "type": "url", "url": "/#locations" }
+      ]
+    },
+    {
+      "id": "footer-shop",
+      "name": "Footer — Shop",
+      "items": [
+        { "id": "fs-new", "label": "New Buses", "type": "inventory", "ref": "inventory?condition=new" },
+        { "id": "fs-used", "label": "Used Buses", "type": "inventory", "ref": "inventory?condition=used" },
+        { "id": "fs-parts", "label": "Parts Catalogue", "type": "inventory", "ref": "parts" },
+        { "id": "fs-financing", "label": "Financing", "type": "page", "ref": "financing" }
+      ]
+    },
+    {
+      "id": "footer-support",
+      "name": "Footer — Support",
+      "items": [
+        { "id": "fu-service", "label": "Service", "type": "url", "url": "/#service" },
+        { "id": "fu-parts", "label": "Parts", "type": "url", "url": "/#parts" },
+        { "id": "fu-contact", "label": "Contact", "type": "url", "url": "/#contact" }
+      ]
+    },
+    {
+      "id": "footer-company",
+      "name": "Footer — Company",
+      "items": [
+        { "id": "fc-about", "label": "About Us", "type": "url", "url": "/#about" },
+        { "id": "fc-locations", "label": "Locations", "type": "url", "url": "/#locations" },
+        { "id": "fc-careers", "label": "Careers", "type": "url", "url": "/#careers" }
+      ]
+    },
+    {
+      "id": "legal",
+      "name": "Legal",
+      "items": [
+        { "id": "legal-privacy", "label": "Privacy Policy", "type": "url", "url": "/privacy" },
+        { "id": "legal-terms", "label": "Terms", "type": "url", "url": "/terms" }
+      ]
+    }
+  ]
+}

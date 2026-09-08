@@ -1,0 +1,113 @@
+/* ==========================================================================
+   Home — section treatments the block library does not carry by itself.
+   Every selector is scoped to a node id, so a section added tomorrow is
+   unaffected.
+   ========================================================================== */
+
+/* --- Hero ---------------------------------------------------------------
+   The photo is a node style (Design → the hero section → Background image),
+   so it stays swappable on the canvas. The scrim is here because a section
+   can only carry one background. */
+[data-bz-node="hero"]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(20, 17, 14, .93) 0%, rgba(20, 17, 14, .78) 46%, rgba(20, 17, 14, .3) 100%);
+}
+[data-bz-node="hero"] > .bz-container { position: relative; z-index: 1; }
+
+[data-bz-node="hero-title"] .bz-eyebrow {
+  display: inline-block;
+  margin-bottom: var(--space-5);
+  padding: 8px 14px;
+  border-radius: var(--radius-chip);
+  background: var(--accent);
+  color: var(--ink-dark);
+  letter-spacing: .06em;
+}
+[data-bz-node="hero-title"] h1 { color: #fff; max-width: 12ch; }
+[data-bz-node="hero-lede"] p { max-width: 520px; font-size: 18px; line-height: 1.6; color: #EDE9E0; }
+
+[data-bz-node="hero-search"] .bz-searchbar {
+  max-width: 520px;
+  gap: 0;
+  background: #fff;
+  border-radius: var(--radius-input);
+  overflow: hidden;
+  margin-top: var(--space-6);
+}
+[data-bz-node="hero-search"] .bz-input { border: 0; border-radius: 0; min-height: 52px; padding-inline: 18px; }
+[data-bz-node="hero-search"] .bz-btn { border-radius: 0; padding-inline: 26px; }
+
+/* --- Featured listings --------------------------------------------------- */
+[data-bz-node="inv-more"] .bz-btns { justify-content: flex-end; margin-bottom: 0; }
+
+/* --- Why Sun State ------------------------------------------------------- */
+[data-bz-node="about-title"] h2 { text-transform: uppercase; letter-spacing: .01em; }
+[data-bz-node="about-band"] { padding-block: 0; background: none; }
+[data-bz-node="about-band"] .bz-band { grid-template-columns: 1fr; }
+[data-bz-node="about-band"] .bz-stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-4);
+}
+[data-bz-node="about-band"] .bz-stat {
+  flex: 1 1 190px;
+  max-width: 260px;
+  border-left: 0;
+  padding: var(--space-6) var(--space-5);
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: var(--radius-card);
+  background: rgba(255, 255, 255, .04);
+}
+[data-bz-node="about-band"] .bz-stat__v { font-size: 28px; }
+
+/* --- Service & Parts ----------------------------------------------------- */
+[data-bz-node="sp-service-img"] img,
+[data-bz-node="sp-parts-img"] img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: var(--radius-modal);
+  margin-bottom: var(--space-6);
+}
+/* The handoff gives these two an ink button rather than the accent one the
+   same CTA wears in the header — weight, not a different destination. */
+[data-bz-node="sp-service-cta"] .bz-btn,
+[data-bz-node="sp-parts-cta"] .bz-btn { background: var(--ink); color: #F2EEE6; }
+[data-bz-node="sp-service-cta"] .bz-btn:hover,
+[data-bz-node="sp-parts-cta"] .bz-btn:hover { background: #2A2620; }
+
+/* --- Financing banner ---------------------------------------------------- */
+[data-bz-node="financing"] h2 { font-size: 30px; margin-bottom: var(--space-2); }
+[data-bz-node="fin-t"] p { max-width: 520px; color: var(--ink-dark); }
+[data-bz-node="fin-btn"] .bz-btn { background: var(--ink); color: #F2EEE6; min-height: 50px; padding-inline: 26px; }
+[data-bz-node="fin-btn"] .bz-btn:hover { background: #2A2620; }
+[data-bz-node="fin-btn"] .bz-btns { margin-block: 0; justify-content: flex-end; }
+
+/* --- Blog ---------------------------------------------------------------- */
+[data-bz-node="blog-list"] h2 { text-transform: uppercase; font-size: 38px; margin-bottom: var(--space-6); }
+[data-bz-node="blog-list"] .bz-card { background: #fff; border-color: transparent; }
+[data-bz-node="blog-list"] .bz-card img { aspect-ratio: 4 / 3; object-fit: cover; }
+[data-bz-node="blog-list"] .bz-card__t { font-size: 17px; line-height: 1.3; }
+[data-bz-node="blog-list"] .bz-card__body { padding: var(--space-5); }
+
+/* --- Contact ------------------------------------------------------------- */
+[data-bz-node="contact-form"] .bz-form { border: 0; padding: 0; background: none; }
+[data-bz-node="subscribe-col"] { border-radius: var(--radius-card); }
+[data-bz-node="subscribe-form"] .bz-form { border: 0; padding: 0; background: none; }
+[data-bz-node="subscribe-form"] .bz-form__t { display: none; }
+
+@media (max-width: 640px) {
+  [data-bz-node="hero"]::before { background: linear-gradient(180deg, rgba(20, 17, 14, .82) 0%, rgba(20, 17, 14, .94) 100%); }
+  [data-bz-node="hero-title"] h1 { font-size: 30px; max-width: none; }
+  [data-bz-node="inv-more"] .bz-btns,
+  [data-bz-node="fin-btn"] .bz-btns { justify-content: flex-start; }
+  [data-bz-node="blog-list"] h2 { font-size: 26px; }
+}
+
+/* The section heading already says "Talk to Our Team"; the form's own title
+   would say it twice. */
+[data-bz-node="contact-form"] .bz-form__t { display: none; }
+[data-bz-node="subscribe-form"] h3 { font-size: var(--text-h3); }

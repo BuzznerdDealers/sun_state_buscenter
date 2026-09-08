@@ -1,0 +1,43 @@
+{
+  "id": "request-parts",
+  "name": "Order parts",
+  "status": "live",
+  "surfaces": ["partsPdp", "page", "blog"],
+  "intent": "order-parts",
+  "submitLabel": "Send parts request",
+  "successMessage": "Thanks — the parts desk will confirm availability and pricing.",
+  "consent": {
+    "enabled": true,
+    "required": true,
+    "text": "I agree to be contacted about this parts request by phone, text or email."
+  },
+  "fields": [
+    { "id": "rp-name", "type": "full_name", "label": "Full name", "required": true },
+    { "id": "rp-company", "type": "single_line", "label": "District or company", "required": false },
+    { "id": "rp-email", "type": "email", "label": "Email", "required": true },
+    { "id": "rp-phone", "type": "phone", "label": "Phone", "required": true },
+    { "id": "rp-unit", "type": "single_line", "label": "Bus model, year or VIN", "required": false },
+    { "id": "rp-parts", "type": "paragraph", "label": "Which parts do you need?", "required": true },
+    {
+      "id": "rp-fulfil",
+      "type": "radio",
+      "label": "Ship or collect?",
+      "required": true,
+      "options": [
+        { "value": "ship", "label": "Ship it to me" },
+        { "value": "counter", "label": "I'll collect at the counter" }
+      ]
+    }
+  ],
+  "notifications": [
+    {
+      "id": "rp-desk",
+      "name": "Parts desk",
+      "logic": "AND",
+      "rules": [],
+      "targetType": "role",
+      "roleId": "parts-advisor",
+      "scopeMode": "dynamic"
+    }
+  ]
+}

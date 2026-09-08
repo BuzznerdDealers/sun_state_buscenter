@@ -1,0 +1,47 @@
+{
+  "slug": "specing-your-next-school-bus",
+  "title": "Spec'ing Your Next School Bus: Matching Bus to Route the Right Way",
+  "date": "2026-07-30",
+  "description": "Capacity, body style and powertrain are one decision, not three. Here is how the routes you actually run should drive the order sheet.",
+  "coverImage": "/images/blog-bus-2.jpg",
+  "status": "published",
+  "nodes": [
+    {
+      "id": "sp-lede",
+      "type": "text",
+      "props": {
+        "text": "Most spec regret traces back to one habit: ordering the bus that replaced the last one instead of the bus the route needs now. Routes change faster than fleets do."
+      }
+    },
+    {
+      "id": "sp-h1",
+      "type": "heading",
+      "props": {
+        "text": "Start with the route, not the capacity",
+        "headingLevel": 2
+      }
+    },
+    {
+      "id": "sp-t1",
+      "type": "text",
+      "props": {
+        "text": "A 77-passenger CE Series and an 84-passenger RE Series are not interchangeable just because the ridership fits. Turning radius, driveway clearance and where the stops sit on a two-lane road decide which one can actually run the route on time.\n\nCount the tightest three turns on the route first. If any of them is a residential cul-de-sac, the conversation is about wheelbase before it is about seats."
+      }
+    },
+    {
+      "id": "sp-h2",
+      "type": "heading",
+      "props": {
+        "text": "Then the powertrain",
+        "headingLevel": 2
+      }
+    },
+    {
+      "id": "sp-t2",
+      "type": "text",
+      "props": {
+        "text": "IC Bus offers diesel, propane, gasoline and electric across the line. The deciding number is daily mileage against your depot's charging or fuelling reality — an electric CE Series covers a typical Florida elementary route twice over, but only if the depot can put the charge back overnight.\n\nBring us a week of route sheets and we will spec against them rather than against a brochure."
+      }
+    }
+  ]
+}

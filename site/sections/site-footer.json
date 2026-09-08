@@ -1,0 +1,222 @@
+{
+  "version": 2,
+  "id": "site-footer",
+  "name": "Site footer",
+  "props": [
+    {
+      "key": "about",
+      "type": "textarea",
+      "label": "About the dealership"
+    },
+    {
+      "key": "copyright",
+      "type": "text",
+      "label": "Copyright line",
+      "default": "© 2026 Sun State Bus Centers. All rights reserved."
+    },
+    {
+      "key": "legalMenu",
+      "type": "text",
+      "label": "Legal menu id",
+      "default": "legal"
+    },
+    {
+      "key": "logo",
+      "type": "image",
+      "label": "Footer logo"
+    },
+    {
+      "key": "builtLogo",
+      "type": "image",
+      "label": "Agency logo"
+    },
+    {
+      "key": "builtUrl",
+      "type": "url",
+      "label": "Agency link"
+    },
+    {
+      "key": "linkColumns",
+      "type": "list",
+      "label": "Link columns",
+      "fields": [
+        {
+          "key": "heading",
+          "type": "text",
+          "label": "Column heading"
+        },
+        {
+          "key": "menuId",
+          "type": "text",
+          "label": "Menu id"
+        }
+      ]
+    },
+    {
+      "key": "socials",
+      "type": "list",
+      "label": "Social profiles",
+      "fields": [
+        {
+          "key": "label",
+          "type": "text",
+          "label": "Network"
+        },
+        {
+          "key": "url",
+          "type": "url",
+          "label": "Profile URL"
+        },
+        {
+          "key": "icon",
+          "type": "image",
+          "label": "Icon"
+        }
+      ]
+    }
+  ],
+  "css": "[data-bz-section=\"site-footer\"] .bz-section { background: var(--ink); color: rgba(255,255,255,.72) }\n[data-bz-section=\"site-footer\"] [data-bz-node=\"sf-logo\"] img { height: 38px; width: auto; display: block; margin-bottom: var(--space-4) }\n[data-bz-section=\"site-footer\"] [data-bz-node=\"sf-about\"] p { font-size: var(--text-small); line-height: 1.6; color: rgba(255,255,255,.6); margin-bottom: 18px }\n[data-bz-section=\"site-footer\"] [data-bz-node^=\"sf-col-h\"] h3 { font-family: var(--font-body); font-weight: 700; font-size: var(--text-eyebrow); letter-spacing: .08em; text-transform: uppercase; color: #fff; margin: 0 0 var(--space-4) }\n[data-bz-section=\"site-footer\"] .bz-menu--vertical { gap: 10px }\n[data-bz-section=\"site-footer\"] .bz-navitem > a { color: rgba(255,255,255,.72); font-size: var(--text-small); padding: 0 }\n[data-bz-section=\"site-footer\"] .bz-navitem > a:hover { color: #fff }\n[data-bz-section=\"site-footer\"] [data-bz-node=\"sf-bottom\"] { border-top: 1px solid rgba(255,255,255,.14); padding-top: var(--space-5); margin-top: var(--space-6) }\n[data-bz-section=\"site-footer\"] [data-bz-node=\"sf-bottom\"] p { margin: 0; font-size: var(--text-eyebrow); color: rgba(255,255,255,.5) }\n[data-bz-section=\"site-footer\"] [data-bz-node=\"sf-legal\"] { display: flex; align-items: flex-end; justify-content: flex-end; gap: 18px; flex-wrap: wrap }\n[data-bz-section=\"site-footer\"] [data-bz-node=\"sf-legal\"] .bz-menu--horizontal { gap: 18px }\n[data-bz-section=\"site-footer\"] [data-bz-node=\"sf-legal\"] .bz-navitem > a { font-size: var(--text-eyebrow) }\n[data-bz-section=\"site-footer\"] [data-bz-node=\"sf-built\"] img { height: 16px; width: auto; display: block }\n[data-bz-section=\"site-footer\"] [data-bz-node=\"sf-built\"] figure,\n[data-bz-section=\"site-footer\"] [data-bz-node=\"sf-built\"] p { margin: 0 }\n@media (max-width: 900px) {\n  [data-bz-section=\"site-footer\"] [data-bz-node=\"sf-legal\"] { justify-content: flex-start }\n}\n[data-bz-section=\"site-footer\"] .bz-navitem > a { font-family: var(--font-body); font-weight: 500; font-size: 13px }\n[data-bz-section=\"site-footer\"] [data-bz-node^=\"sf-col-h\"] h3 { font-size: var(--text-eyebrow) }",
+  "nodes": [
+    {
+      "id": "sf",
+      "type": "section",
+      "props": {
+        "width": "wide",
+        "paddingY": 9,
+        "background": "ink"
+      },
+      "children": [
+        {
+          "id": "sf-row",
+          "type": "row",
+          "props": {
+            "gap": 6,
+            "align": "start",
+            "stackOn": "tablet"
+          },
+          "children": [
+            {
+              "id": "sf-brand",
+              "type": "column",
+              "props": {
+                "span": 6
+              },
+              "children": [
+                {
+                  "id": "sf-logo",
+                  "type": "logo",
+                  "props": {
+                    "image": "{{logo}}",
+                    "text": "Sun State Bus Centers",
+                    "url": "/",
+                    "height": 38
+                  }
+                },
+                {
+                  "id": "sf-about",
+                  "type": "text",
+                  "props": {
+                    "text": "{{about}}",
+                    "width": "full"
+                  }
+                },
+                {
+                  "id": "sf-social",
+                  "type": "social-links",
+                  "props": {
+                    "links": "{{socials}}",
+                    "size": "md"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "sf-col",
+              "type": "column",
+              "props": {
+                "span": 2,
+                "repeat": "linkColumns"
+              },
+              "children": [
+                {
+                  "id": "sf-col-h",
+                  "type": "heading",
+                  "props": {
+                    "text": "{{heading}}",
+                    "headingLevel": 3
+                  }
+                },
+                {
+                  "id": "sf-col-nav",
+                  "type": "menu",
+                  "props": {
+                    "menuId": "{{menuId}}",
+                    "layout": "vertical",
+                    "depth": 1
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sf-bottom",
+          "type": "row",
+          "props": {
+            "gap": 4,
+            "align": "center",
+            "stackOn": "mobile"
+          },
+          "children": [
+            {
+              "id": "sf-copy",
+              "type": "column",
+              "props": {
+                "span": 6
+              },
+              "children": [
+                {
+                  "id": "sf-copy-text",
+                  "type": "text",
+                  "props": {
+                    "text": "{{copyright}}",
+                    "width": "full"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "sf-legal",
+              "type": "column",
+              "props": {
+                "span": 6,
+                "align": "end"
+              },
+              "children": [
+                {
+                  "id": "sf-legal-nav",
+                  "type": "menu",
+                  "props": {
+                    "menuId": "{{legalMenu}}",
+                    "layout": "horizontal",
+                    "align": "end",
+                    "depth": 1
+                  }
+                },
+                {
+                  "id": "sf-built",
+                  "type": "image",
+                  "props": {
+                    "image": "{{builtLogo}}",
+                    "url": "{{builtUrl}}",
+                    "width": "full"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "id": "contact",
+  "name": "Talk to our team",
+  "status": "live",
+  "surfaces": ["page", "blog"],
+  "intent": "request-info",
+  "submitLabel": "Send Message",
+  "successMessage": "Thanks — we'll respond within one business day.",
+  "consent": {
+    "enabled": true,
+    "required": true,
+    "text": "I agree to be contacted about this enquiry by phone, text or email."
+  },
+  "fields": [
+    { "id": "c-name", "type": "full_name", "label": "Full name", "required": true },
+    { "id": "c-email", "type": "email", "label": "Email address", "required": true },
+    { "id": "c-phone", "type": "phone", "label": "Phone", "required": false },
+    {
+      "id": "c-topic",
+      "type": "radio",
+      "label": "What is this about?",
+      "required": true,
+      "options": [
+        { "value": "sales", "label": "Inventory" },
+        { "value": "service", "label": "Service" },
+        { "value": "parts", "label": "Parts" },
+        { "value": "financing", "label": "Financing" }
+      ]
+    },
+    { "id": "c-message", "type": "paragraph", "label": "How can we help?", "required": true }
+  ],
+  "notifications": [
+    {
+      "id": "c-sales",
+      "name": "Inventory enquiries",
+      "logic": "AND",
+      "rules": [{ "fieldId": "c-topic", "operator": "is", "value": "sales" }],
+      "targetType": "role",
+      "roleId": "salesperson",
+      "scopeMode": "dynamic"
+    },
+    {
+      "id": "c-service",
+      "name": "Service enquiries",
+      "logic": "AND",
+      "rules": [{ "fieldId": "c-topic", "operator": "is", "value": "service" }],
+      "targetType": "role",
+      "roleId": "service-advisor",
+      "scopeMode": "dynamic"
+    },
+    {
+      "id": "c-parts",
+      "name": "Parts enquiries",
+      "logic": "AND",
+      "rules": [{ "fieldId": "c-topic", "operator": "is", "value": "parts" }],
+      "targetType": "role",
+      "roleId": "parts-advisor",
+      "scopeMode": "dynamic"
+    },
+    {
+      "id": "c-finance",
+      "name": "Financing enquiries",
+      "logic": "AND",
+      "rules": [{ "fieldId": "c-topic", "operator": "is", "value": "financing" }],
+      "targetType": "role",
+      "roleId": "finance-manager",
+      "scopeMode": "dynamic"
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "id": "location-finder",
+  "label": "Location finder",
+  "category": "section",
+  "description": "The filterable location rail: department and state chips over a row of location cards. Place it on a node with the \"filter\" behaviour.",
+  "props": [
+    {
+      "key": "departmentsLabel",
+      "type": "text",
+      "label": "Department filter label",
+      "default": "Filter by department"
+    },
+    {
+      "key": "statesLabel",
+      "type": "text",
+      "label": "State filter label",
+      "default": "Filter by state"
+    },
+    {
+      "key": "departments",
+      "type": "list",
+      "label": "Department chips",
+      "fields": [
+        {
+          "key": "label",
+          "type": "text",
+          "label": "Label"
+        },
+        {
+          "key": "value",
+          "type": "text",
+          "label": "Matches (all = clear)"
+        }
+      ]
+    },
+    {
+      "key": "states",
+      "type": "list",
+      "label": "State chips",
+      "fields": [
+        {
+          "key": "label",
+          "type": "text",
+          "label": "Label"
+        },
+        {
+          "key": "value",
+          "type": "text",
+          "label": "Matches (all = clear)"
+        }
+      ]
+    },
+    {
+      "key": "locations",
+      "type": "list",
+      "label": "Locations",
+      "fields": [
+        {
+          "key": "name",
+          "type": "text",
+          "label": "Name"
+        },
+        {
+          "key": "address",
+          "type": "text",
+          "label": "Address"
+        },
+        {
+          "key": "phone",
+          "type": "text",
+          "label": "Phone"
+        },
+        {
+          "key": "state",
+          "type": "text",
+          "label": "State code"
+        },
+        {
+          "key": "sales",
+          "type": "boolean",
+          "label": "Sales"
+        },
+        {
+          "key": "parts",
+          "type": "boolean",
+          "label": "Parts"
+        },
+        {
+          "key": "service",
+          "type": "boolean",
+          "label": "Service"
+        },
+        {
+          "key": "directions",
+          "type": "url",
+          "label": "Directions link"
+        }
+      ]
+    },
+    {
+      "key": "countLabel",
+      "type": "text",
+      "label": "Count template ({n} = results)",
+      "default": "{n} locations"
+    },
+    {
+      "key": "emptyText",
+      "type": "text",
+      "label": "No-results message",
+      "default": "No locations match these filters."
+    }
+  ],
+  "html": "<div class=\"lf\"><div class=\"lf__filters\"><div class=\"lf__chips\" role=\"group\" aria-label=\"{{departmentsLabel}}\">{{#each departments}}<button class=\"lf__chip\" type=\"button\" aria-pressed=\"false\" data-bz-part=\"control\" data-bz-facet=\"services\" data-bz-value=\"{{value}}\" data-bz-el=\"button\" data-bz-intent=\"filter-locations\">{{label}}</button>{{/each}}</div><div class=\"lf__chips\" role=\"group\" aria-label=\"{{statesLabel}}\">{{#each states}}<button class=\"lf__chip\" type=\"button\" aria-pressed=\"false\" data-bz-part=\"control\" data-bz-facet=\"state\" data-bz-value=\"{{value}}\" data-bz-el=\"button\" data-bz-intent=\"filter-locations\">{{label}}</button>{{/each}}</div></div><p class=\"lf__count\"><span data-bz-part=\"count\" data-bz-count-template=\"{{countLabel}}\">All locations</span></p><div class=\"lf__rail\">{{#each locations}}<div class=\"lf__card\" data-bz-part=\"item\" data-services=\"{{#if sales}}sales {{/if}}{{#if parts}}parts {{/if}}{{#if service}}service{{/if}}\" data-state=\"{{state}}\"><div class=\"lf__head\"><h3 class=\"lf__name\">{{name}}</h3><span class=\"lf__state\">{{state}}</span></div><div class=\"lf__address\">{{address}}</div><div class=\"lf__phone\">{{phone}}</div>{{#if directions}}<a class=\"lf__directions\" href=\"{{link directions}}\" data-bz-el=\"link\" data-bz-intent=\"get-directions\">Directions &#8594;</a>{{/if}}<div class=\"lf__tags\">{{#if sales}}<span class=\"lf__tag\">Sales</span>{{/if}}{{#if parts}}<span class=\"lf__tag\">Parts</span>{{/if}}{{#if service}}<span class=\"lf__tag\">Service</span>{{/if}}</div></div>{{/each}}</div><p class=\"lf__empty\" data-bz-part=\"empty\" hidden>{{emptyText}}</p></div>",
+  "css": ".lf{counter-reset:loc}\n.lf__filters{display:flex;flex-direction:column;gap:10px;align-items:flex-start;margin-bottom:var(--space-5)}\n.lf__chips{display:flex;gap:var(--space-2);flex-wrap:wrap}\n.lf__chip{display:inline-flex;align-items:center;min-height:34px;padding:0 14px;border:1px solid var(--line);border-radius:var(--radius-nav);background:var(--card);color:var(--ink);font-size:var(--text-eyebrow);font-weight:600;cursor:pointer;transition:background-color .15s ease}\n.lf__chip:hover{background:var(--paper)}\n.lf__chip[aria-pressed=\"true\"]{background:var(--ink);border-color:transparent;color:#fff}\n.lf__count{margin:0 0 var(--space-4);font-size:var(--text-small);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}\n.lf__rail{display:flex;gap:var(--space-4);overflow-x:auto;padding-bottom:var(--space-2);scroll-snap-type:x mandatory}\n.lf__card{counter-increment:loc;flex:0 0 268px;scroll-snap-align:start;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-card);padding:var(--space-5)}\n.lf__card[hidden]{display:none}\n.lf__head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:6px}\n.lf__name{margin:0;font-family:var(--font-heading);font-weight:700;font-size:17px;line-height:1.25;text-transform:uppercase;letter-spacing:.01em;color:var(--ink)}\n.lf__name::before{content:counter(loc,decimal-leading-zero) \" \";color:var(--muted);font-size:var(--text-small)}\n.lf__state{flex-shrink:0;font-weight:700;font-size:var(--text-small);color:var(--muted)}\n.lf__address{font-size:var(--text-small);line-height:1.5;color:var(--muted);margin-bottom:var(--space-3)}\n.lf__phone{font-size:var(--text-small);margin-bottom:var(--space-4);color:var(--ink)}\n.lf__directions{display:inline-block;font-size:var(--text-small);font-weight:700;color:var(--accent-dark);text-decoration:none;margin-bottom:18px}\n.lf__directions:hover{text-decoration:underline}\n.lf__tags{display:flex;gap:var(--space-2);flex-wrap:wrap}\n.lf__tag{display:inline-flex;align-items:center;height:24px;padding:0 10px;border-radius:var(--radius-chip);background:var(--paper);border:1px solid var(--line);font-size:var(--text-eyebrow);font-weight:700;color:var(--muted)}\n.lf__empty{padding:var(--space-6) 0;color:var(--muted);font-size:var(--text-small)}\n@media (max-width:900px){.lf__filters{align-items:stretch}.lf__chips{flex-wrap:nowrap;overflow-x:auto}.lf__chip{flex:0 0 auto;white-space:nowrap}}"
+}

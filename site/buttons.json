@@ -1,0 +1,125 @@
+[
+  {
+    "id": "browse-inventory",
+    "label": "Browse inventory",
+    "url": "/store/inventory",
+    "style": "primary",
+    "intent": "browse-inventory",
+    "newTab": false,
+    "active": true
+  },
+  {
+    "id": "view-all-inventory",
+    "label": "View all inventory →",
+    "url": "/store/inventory",
+    "style": "link",
+    "intent": "browse-inventory",
+    "newTab": false,
+    "active": true
+  },
+  {
+    "id": "schedule-service",
+    "label": "Schedule Service",
+    "url": null,
+    "formId": "request-service",
+    "style": "primary",
+    "intent": "book-service",
+    "newTab": false,
+    "active": true
+  },
+  {
+    "id": "order-parts",
+    "label": "Order Parts",
+    "url": null,
+    "formId": "request-parts",
+    "style": "primary",
+    "intent": "order-parts",
+    "newTab": false,
+    "active": true
+  },
+  {
+    "id": "get-pre-qualified",
+    "label": "Get Pre-Qualified",
+    "url": "/financing",
+    "style": "primary",
+    "intent": "get-financing",
+    "newTab": false,
+    "active": true
+  },
+  {
+    "id": "apply-now",
+    "label": "Apply Now",
+    "url": null,
+    "formId": "finance-application",
+    "style": "primary",
+    "intent": "get-financing",
+    "newTab": false,
+    "active": true
+  },
+  {
+    "id": "call-sales",
+    "label": "800-741-7566",
+    "url": "tel:+18007417566",
+    "style": "secondary",
+    "intent": "call-dealer",
+    "newTab": false,
+    "active": true
+  },
+  {
+    "id": "warranty-benefits",
+    "label": "Learn more →",
+    "url": null,
+    "formId": "warranty-enquiry",
+    "style": "link",
+    "intent": "warranty-info",
+    "newTab": false,
+    "active": true
+  },
+  {
+    "id": "warranty-plans",
+    "label": "Learn more →",
+    "url": null,
+    "formId": "warranty-enquiry",
+    "style": "link",
+    "intent": "warranty-info",
+    "newTab": false,
+    "active": true
+  },
+  {
+    "id": "international-financial",
+    "label": "Learn more →",
+    "url": null,
+    "formId": "finance-application",
+    "style": "link",
+    "intent": "get-financing",
+    "newTab": false,
+    "active": true
+  },
+  {
+    "id": "quote-prev",
+    "label": "Previous testimonial",
+    "url": "#",
+    "style": "secondary",
+    "intent": "carousel-prev",
+    "newTab": false,
+    "active": true
+  },
+  {
+    "id": "quote-next",
+    "label": "Next testimonial",
+    "url": "#",
+    "style": "secondary",
+    "intent": "carousel-next",
+    "newTab": false,
+    "active": true
+  },
+  {
+    "id": "back-to-top",
+    "label": "↑",
+    "url": "#top",
+    "style": "primary",
+    "intent": "back-to-top",
+    "newTab": false,
+    "active": true
+  }
+]

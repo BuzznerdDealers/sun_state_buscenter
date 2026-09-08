@@ -1,0 +1,65 @@
+{
+  "slug": "preventive-maintenance-101",
+  "title": "Preventive Maintenance 101: When to Schedule, When to React",
+  "date": "2026-08-18",
+  "description": "The intervals that matter on a school bus route, and the three symptoms that should never wait for the next service window.",
+  "coverImage": "/images/blog-bus-1.jpg",
+  "status": "published",
+  "nodes": [
+    {
+      "id": "pm-lede",
+      "type": "text",
+      "props": {
+        "text": "A bus that misses a route costs more than the repair that would have prevented it. Preventive maintenance is not about doing more work — it is about doing the same work earlier, when it is cheap and the bus is already in the shop."
+      }
+    },
+    {
+      "id": "pm-h1",
+      "type": "heading",
+      "props": {
+        "text": "Schedule it",
+        "headingLevel": 2
+      }
+    },
+    {
+      "id": "pm-list",
+      "type": "list",
+      "props": {
+        "columns": 2,
+        "items": [
+          {
+            "label": "Every 3,000 miles",
+            "desc": "Oil and filter, chassis lube, a walk of the air system for leaks."
+          },
+          {
+            "label": "Every 6,000 miles",
+            "desc": "Brake adjustment check, air dryer cartridge inspection, battery load test."
+          },
+          {
+            "label": "Twice a year",
+            "desc": "FDOE safety inspection, stop arm and crossing gate function, emergency exit operation."
+          },
+          {
+            "label": "Before summer",
+            "desc": "Air conditioning service. Florida heat finds a weak compressor in June, not in March."
+          }
+        ]
+      }
+    },
+    {
+      "id": "pm-h2",
+      "type": "heading",
+      "props": {
+        "text": "React to it",
+        "headingLevel": 2
+      }
+    },
+    {
+      "id": "pm-react",
+      "type": "text",
+      "props": {
+        "text": "Three things should never wait for the next scheduled window: an air pressure drop that builds slower than it used to, any change in how the brakes feel from the driver's seat, and a charging system warning that clears itself. Each of them is a small repair this week and a tow next week.\n\nIf you are seeing any of those, book it — our service advisors keep same-week slots open across Tampa, Sarasota and Davenport for exactly this."
+      }
+    }
+  ]
+}

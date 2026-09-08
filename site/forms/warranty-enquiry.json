@@ -1,0 +1,43 @@
+{
+  "id": "warranty-enquiry",
+  "name": "Bus warranty enquiry",
+  "status": "live",
+  "surfaces": ["pdp", "page", "blog"],
+  "intent": "warranty-info",
+  "submitLabel": "Send enquiry",
+  "successMessage": "Thanks — we'll send over the coverage that fits your fleet.",
+  "consent": {
+    "enabled": true,
+    "required": true,
+    "text": "I agree to be contacted about bus protection plans by phone, text or email."
+  },
+  "fields": [
+    { "id": "we-name", "type": "full_name", "label": "Full name", "required": true },
+    { "id": "we-email", "type": "email", "label": "Email", "required": true },
+    { "id": "we-phone", "type": "phone", "label": "Phone", "required": false },
+    {
+      "id": "we-fleet",
+      "type": "radio",
+      "label": "Which buses need cover?",
+      "required": true,
+      "options": [
+        { "value": "new", "label": "New buses (manufacturer warranty still running)" },
+        { "value": "used", "label": "Used buses under 8 years old" },
+        { "value": "mixed", "label": "A mix of both" }
+      ]
+    },
+    { "id": "we-count", "type": "number", "label": "How many buses?", "required": false },
+    { "id": "we-notes", "type": "paragraph", "label": "Questions for us?", "required": false }
+  ],
+  "notifications": [
+    {
+      "id": "we-finance",
+      "name": "Finance department",
+      "logic": "AND",
+      "rules": [],
+      "targetType": "role",
+      "roleId": "finance-manager",
+      "scopeMode": "dynamic"
+    }
+  ]
+}

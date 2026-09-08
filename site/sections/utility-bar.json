@@ -1,0 +1,116 @@
+{
+  "version": 2,
+  "id": "utility-bar",
+  "name": "Utility bar",
+  "props": [
+    {
+      "key": "address",
+      "type": "text",
+      "label": "Address",
+      "default": "6020 Adamo Drive, Tampa, FL 33619"
+    },
+    {
+      "key": "socials",
+      "type": "list",
+      "label": "Social profiles",
+      "fields": [
+        {
+          "key": "label",
+          "type": "text",
+          "label": "Network"
+        },
+        {
+          "key": "url",
+          "type": "url",
+          "label": "Profile URL"
+        },
+        {
+          "key": "icon",
+          "type": "image",
+          "label": "Icon"
+        }
+      ]
+    }
+  ],
+  "css": "[data-bz-section=\"utility-bar\"] .bz-section { background: var(--ink); color: #fff; font-size: var(--text-small) }\n[data-bz-section=\"utility-bar\"] [data-bz-node=\"ub-left\"],\n[data-bz-section=\"utility-bar\"] [data-bz-node=\"ub-right\"] { display: flex; align-items: center; gap: var(--space-5); flex-wrap: wrap }\n[data-bz-section=\"utility-bar\"] [data-bz-node=\"ub-right\"] { justify-content: flex-end }\n[data-bz-section=\"utility-bar\"] .bz-btns { margin-block: 0 }\n[data-bz-section=\"utility-bar\"] .bz-btn--secondary { background: none; border: 0; padding: 0; min-height: 0; color: #fff; font-weight: 700 }\n[data-bz-section=\"utility-bar\"] [data-bz-node=\"ub-address\"] p { margin: 0; color: rgba(255,255,255,.72) }\n[data-bz-section=\"utility-bar\"] .bz-menu--horizontal { gap: 28px }\n[data-bz-section=\"utility-bar\"] .bz-navitem > a { color: rgba(255,255,255,.85); font-size: var(--text-small); font-weight: 500; padding: 0 }\n[data-bz-section=\"utility-bar\"] .bz-navitem > a:hover { color: #fff }\n/* Below 900px the bar becomes one line: the phone and the social row. The\n   address and the utility links both have a home in the footer, and four\n   stacked lines of chrome would push the hero off the first screen. */\n@media (max-width: 900px) {\n  [data-bz-section=\"utility-bar\"] [data-bz-node=\"ub-row\"] { display: flex; flex-wrap: nowrap; align-items: center; justify-content: space-between; column-gap: var(--space-4) }\n  [data-bz-section=\"utility-bar\"] [data-bz-node=\"ub-row\"] > .bz-col { width: auto; flex: 0 0 auto }\n  [data-bz-section=\"utility-bar\"] [data-bz-node=\"ub-address\"],\n  [data-bz-section=\"utility-bar\"] [data-bz-node=\"ub-menu\"] { display: none }\n}",
+  "nodes": [
+    {
+      "id": "ub",
+      "type": "section",
+      "props": {
+        "width": "wide",
+        "background": "ink",
+        "paddingY": 2
+      },
+      "children": [
+        {
+          "id": "ub-row",
+          "type": "row",
+          "props": {
+            "gap": 4,
+            "align": "center",
+            "stackOn": "tablet"
+          },
+          "children": [
+            {
+              "id": "ub-left",
+              "type": "column",
+              "props": {
+                "span": 5
+              },
+              "children": [
+                {
+                  "id": "ub-phone",
+                  "type": "buttons",
+                  "props": {
+                    "items": [
+                      {
+                        "ctaId": "call-sales"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "ub-address",
+                  "type": "text",
+                  "props": {
+                    "text": "{{address}}",
+                    "width": "full"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "ub-right",
+              "type": "column",
+              "props": {
+                "span": 7,
+                "align": "end"
+              },
+              "children": [
+                {
+                  "id": "ub-menu",
+                  "type": "menu",
+                  "props": {
+                    "menuId": "utility",
+                    "layout": "horizontal",
+                    "align": "end",
+                    "depth": 1
+                  }
+                },
+                {
+                  "id": "ub-social",
+                  "type": "social-links",
+                  "props": {
+                    "links": "{{socials}}",
+                    "size": "sm"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
