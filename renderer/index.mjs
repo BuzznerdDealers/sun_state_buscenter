@@ -18,6 +18,15 @@
 // Zero runtime dependencies, ESM, Node 20 and modern browsers. It is imported by
 // a zero-dependency static build, so it may not add a bundler requirement to it.
 
+// 4.10.0 — a style override can target a descendant. `textColor` now also
+// compiles onto `*:not(.bz-btn)` inside the node, because `color` is inherited
+// and an inherited value loses to any rule that matches a descendant directly —
+// blocks.css sets it on `.bz-lede`, `.bz-eyebrow`, `.bz-card__m` and a dozen
+// more, so "Text colour" moved the wrapper and nothing anyone could see. Four
+// `button*` fields compile onto `.bz-btn` for the same structural reason: a
+// button is a descendant of the block that places it, so the block's own
+// background paints the strip behind it and never the button.
+//
 // 4.8.0 — `postsList` block: the latest published posts, resolved at build time
 // from ctx.posts so a teaser never goes stale; and half-bleed section widths
 // (`bleed-left` / `bleed-right`) — one side on the page grid, the other running
@@ -39,7 +48,7 @@
 // person or a model hand-writes. `anchor` and `scope` join them as declared
 // universal props: the renderer always read those off any node's wrapper while no
 // widget declared them, so the validator refused edits the build would render.
-export const RENDERER_VERSION = '4.9.0';
+export const RENDERER_VERSION = '4.10.0';
 
 export {
   BEHAVIOURS,

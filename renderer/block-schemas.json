@@ -1,5 +1,5 @@
 {
-  "rendererVersion": "4.9.0",
+  "rendererVersion": "4.10.0",
   "documentVersion": 2,
   "gridColumns": 12,
   "tokenGroups": {
@@ -359,6 +359,10 @@
     {
       "key": "text",
       "label": "Text"
+    },
+    {
+      "key": "button",
+      "label": "Buttons"
     },
     {
       "key": "motion",
@@ -821,6 +825,27 @@
         "normal",
         "nowrap"
       ]
+    },
+    "buttonBackground": {
+      "css": "background-color",
+      "label": "Button fill",
+      "group": "button",
+      "hint": "Applies to every button inside this node, whatever variant it uses."
+    },
+    "buttonTextColor": {
+      "css": "color",
+      "label": "Button text",
+      "group": "button"
+    },
+    "buttonBorderColor": {
+      "css": "border-color",
+      "label": "Button border",
+      "group": "button"
+    },
+    "buttonRadius": {
+      "css": "border-radius",
+      "label": "Button corners",
+      "group": "button"
     },
     "translateX": {
       "css": "transform",

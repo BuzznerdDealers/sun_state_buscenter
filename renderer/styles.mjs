@@ -167,10 +167,47 @@ const FLEX_JUSTIFY = {
 };
 
 /**
+ * Where a declaration lands, relative to the node's own element.
+ *
+ * Almost every override styles the node itself, and the doubled-attribute
+ * selector in `compileNodeStyles` is enough to make it win. Two cases are not
+ * reachable that way, and both used to present as "the style panel does
+ * nothing":
+ *
+ * `CASCADE` exists because `color` is inherited, and an inherited value loses
+ * to *any* rule that matches a descendant directly — specificity never enters
+ * into it. blocks.css sets `color` on `.bz-lede`, `.bz-eyebrow`, `.bz-card__m`,
+ * `.bz-stat__l` and a dozen more, so a text colour set on a section or a card
+ * changed the wrapper and nothing a dealer could see.
+ *
+ * Four classes are held back from it, and each is something a page would be
+ * worse for recolouring: `.bz-btn` carries its own variant colour and has the
+ * fields below; `.bz-input` is a form control painted on the form's own card,
+ * so white-on-dark copy would otherwise mean white-on-white typing; `.bz-req`
+ * and `.bz-form__status` are the only places colour *is* the message, marking
+ * a required field and an error.
+ *
+ * `BUTTON` exists because a button is a descendant of the block that places it.
+ * The block's own `background` paints the strip behind the button and can never
+ * paint the button, so without a selector that reaches `.bz-btn` there was no
+ * way at all to recolour one short of editing the design system.
+ */
+const TARGET = {
+  SELF: '',
+  CASCADE: '*:not(.bz-btn, .bz-input, .bz-req, .bz-form__status)',
+  BUTTON: '.bz-btn',
+};
+
+/** Emission order, so a node's own rule reads first in the compiled sheet. */
+const TARGET_ORDER = [TARGET.SELF, TARGET.CASCADE, TARGET.BUTTON];
+
+/**
  * Everything an override may set. `css` is the property emitted; `accepts`
  * normalises and validates the stored value — a value it returns null for is
  * dropped, never emitted. `group` exists so the style panel can present ~40
  * fields as a handful of collapsed sections rather than one flat wall.
+ * `target` moves the declaration onto a descendant, and `cascade` repeats it on
+ * one as well as the node — see `TARGET` above for why either is ever needed.
  *
  * Declaration order in this object is also *emission* order, which matters in
  * two places: `background` is a shorthand that would reset `background-image`,
@@ -382,7 +419,7 @@ export const STYLE_FIELDS = {
   borderColor: { css: 'border-color', accepts: alphaColor, label: 'Border colour', group: 'border' },
 
   /* ------------------------------------------------------------ typography */
-  textColor: { css: 'color', accepts: alphaColor, label: 'Text colour', group: 'text' },
+  textColor: { css: 'color', accepts: alphaColor, cascade: true, label: 'Text colour', group: 'text' },
   textAlign: { css: 'text-align', accepts: oneOf(['left', 'center', 'right']), label: 'Text align', group: 'text' },
   fontSize: { css: 'font-size', accepts: px(160, 8), label: 'Font size', group: 'text' },
   fontWeight: {
@@ -408,6 +445,33 @@ export const STYLE_FIELDS = {
     group: 'text',
     options: ['normal', 'nowrap'],
   },
+
+  /* --------------------------------------------------------------- buttons */
+  /**
+   * The buttons inside this node, whichever block drew them.
+   *
+   * Deliberately not per-variant: a node holding both a primary and a secondary
+   * button is asking for two colours from one field, and the honest answer to
+   * that is two `buttons` blocks, not a matrix of eight fields. The variant
+   * remains the right way to say "the usual primary"; these are the escape
+   * hatch for the one band where it is wrong.
+   *
+   * A fill set here outranks the variant's `:hover` rule, so an overridden
+   * button holds its colour on hover rather than reverting to the accent. That
+   * is the lesser of the two surprises: the alternative is a button that turns
+   * back into the colour the dealer just rejected.
+   */
+  buttonBackground: {
+    css: 'background-color',
+    target: TARGET.BUTTON,
+    accepts: alphaColor,
+    label: 'Button fill',
+    group: 'button',
+    hint: 'Applies to every button inside this node, whatever variant it uses.',
+  },
+  buttonTextColor: { css: 'color', target: TARGET.BUTTON, accepts: alphaColor, label: 'Button text', group: 'button' },
+  buttonBorderColor: { css: 'border-color', target: TARGET.BUTTON, accepts: alphaColor, label: 'Button border', group: 'button' },
+  buttonRadius: { css: 'border-radius', target: TARGET.BUTTON, accepts: px(999), label: 'Button corners', group: 'button' },
 
   /* ---------------------------------------------------------------- motion */
   /**
@@ -456,6 +520,7 @@ export const STYLE_GROUPS = [
   { key: 'appearance', label: 'Appearance' },
   { key: 'border', label: 'Border' },
   { key: 'text', label: 'Text' },
+  { key: 'button', label: 'Buttons' },
   { key: 'motion', label: 'Motion' },
   { key: 'visibility', label: 'Visibility' },
 ];
@@ -512,12 +577,20 @@ export function unknownStyleKeys(raw) {
   return unknown;
 }
 
+/**
+ * Compile one bucket's values into declarations, grouped by the element they
+ * style — one list per entry in `TARGET`, keyed by its selector.
+ *
+ * Only `target` and `cascade` fields ever leave the first group, so a document
+ * that sets none of them compiles to exactly the CSS it did before.
+ */
 function declarationsFor(values) {
   const entries = Object.entries(values ?? {})
     .filter(([field]) => STYLE_FIELDS[field])
     .sort((a, b) => FIELD_ORDER.indexOf(a[0]) - FIELD_ORDER.indexOf(b[0]));
 
-  const lines = [];
+  const byTarget = Object.fromEntries(TARGET_ORDER.map(target => [target, []]));
+  const lines = byTarget[TARGET.SELF];
   const axes = {};
   let sawBorderWidth = false;
   let sawBorderStyle = false;
@@ -535,7 +608,9 @@ function declarationsFor(values) {
     if (spec.css.startsWith('border-') && spec.css.endsWith('-width')) sawBorderWidth = true;
     if (spec.css === 'border-width') sawBorderWidth = true;
 
-    lines.push(`${spec.css}:${compiled}`);
+    const declaration = `${spec.css}:${compiled}`;
+    byTarget[spec.target ?? TARGET.SELF].push(declaration);
+    if (spec.cascade) byTarget[TARGET.CASCADE].push(declaration);
   }
 
   // A border width without a style renders nothing: the element default is
@@ -551,7 +626,7 @@ function declarationsFor(values) {
   );
   if (transform.length) lines.push(`transform:${transform.join(' ')}`);
 
-  return lines;
+  return byTarget;
 }
 
 /**
@@ -561,7 +636,9 @@ function declarationsFor(values) {
  * per breakpoint. The selector doubles the attribute for weight —
  * `[data-bz-node="x"][data-bz-node]` — so an instance override outranks the
  * single-attribute and single-class rules the component stylesheet uses,
- * without importants and without depending on file order.
+ * without importants and without depending on file order. A targeted field
+ * appends its descendant selector to that same prefix, which is what keeps it
+ * ahead of the `.bz-lede`-style rules it exists to beat.
  */
 export function compileNodeStyles(nodes) {
   const perBucket = { base: [], tablet: [], mobile: [] };
@@ -570,10 +647,14 @@ export function compileNodeStyles(nodes) {
       if (!node || typeof node !== 'object') continue;
       const styles = node.id ? sanitizeStyles(node.styles) : null;
       if (styles) {
+        const prefix = `[data-bz-node="${node.id}"][data-bz-node]`;
         for (const bucket of STYLE_BUCKETS) {
-          const lines = declarationsFor(styles[bucket.key]);
-          if (lines.length) {
-            perBucket[bucket.key].push(`[data-bz-node="${node.id}"][data-bz-node]{${lines.join(';')}}`);
+          const byTarget = declarationsFor(styles[bucket.key]);
+          for (const target of TARGET_ORDER) {
+            const lines = byTarget[target];
+            if (!lines.length) continue;
+            const selector = target ? `${prefix} ${target}` : prefix;
+            perBucket[bucket.key].push(`${selector}{${lines.join(';')}}`);
           }
         }
       }

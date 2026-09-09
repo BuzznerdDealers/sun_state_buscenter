@@ -321,7 +321,15 @@ const CUSTOM = {
 };
 if (CUSTOM.hasJs) write('scripts/custom.js', customCodeRaw.js);
 
-const chromeCss = readText(join(SITE, 'chrome', 'chrome.css'));
+// The storefront only loads /partials/chrome.css. Brand pages also inline each
+// template's `css` field, so a site that styles its header there looks right
+// on the homepage and unstyled around inventory. Always publish the inventory
+// template's CSS with the legacy chrome.css file.
+const inventoryTemplateCss =
+  resolveTemplate({ kind: 'inventory' }, templates).template?.css || '';
+const chromeCss = [readText(join(SITE, 'chrome', 'chrome.css')), inventoryTemplateCss]
+  .filter((s) => s && s.trim())
+  .join('\n\n');
 const chromeJs = readText(join(SITE, 'chrome', 'chrome.js'));
 const resetCss = readText(join(SITE, 'reset.css'));
 // Custom widget CSS is appended to the platform stylesheet rather than served

@@ -390,6 +390,56 @@ test('node styles compile to id-keyed rules with desktop-first media buckets', (
   assert.match(css, /\[data-bz-node="h1"\]\[data-bz-node\]\{color:var\(--accent\)\}/);
 });
 
+test('a text colour reaches the descendants that carry their own colour', () => {
+  const css = compileNodeStyles([
+    { id: 'band', type: 'section', props: {}, styles: { base: { textColor: '#ffffff' } } },
+  ]);
+  // The node's own rule is not enough: `color` is inherited, and blocks.css
+  // sets it directly on `.bz-lede`, `.bz-eyebrow` and friends, which an
+  // inherited value can never beat.
+  assert.match(css, /\[data-bz-node="band"\]\[data-bz-node\]\{color:#ffffff\}/);
+  assert.match(
+    css,
+    /\[data-bz-node="band"\]\[data-bz-node\] \*:not\(\.bz-btn, \.bz-input, \.bz-req, \.bz-form__status\)\{color:#ffffff\}/,
+  );
+  // Buttons keep their variant colour — they have their own fields. Form
+  // controls and the two colour-is-the-message classes are held back too, so a
+  // white-on-dark band cannot produce white text typed into a white field.
+  assert.ok(!/\[data-bz-node="band"\]\[data-bz-node\] \.bz-btn\{/.test(css));
+});
+
+test('button fields style the button, not the block that places it', () => {
+  const css = compileNodeStyles([
+    {
+      id: 'cta',
+      type: 'buttons',
+      props: {},
+      styles: {
+        base: { background: 'paper', buttonBackground: '#0b0b0b', buttonTextColor: '#ffffff' },
+        mobile: { buttonRadius: 4 },
+      },
+    },
+  ]);
+  // The block's own background paints the strip behind the button; only the
+  // targeted rule can paint the button itself.
+  assert.match(css, /\[data-bz-node="cta"\]\[data-bz-node\]\{background:var\(--paper\)\}/);
+  assert.match(
+    css,
+    /\[data-bz-node="cta"\]\[data-bz-node\] \.bz-btn\{background-color:#0b0b0b;color:#ffffff\}/,
+  );
+  assert.match(
+    css,
+    /@media \(max-width: 640px\)\{\[data-bz-node="cta"\]\[data-bz-node\] \.bz-btn\{border-radius:4px\}\}/,
+  );
+});
+
+test('a document that targets nothing compiles to one rule per node, as before', () => {
+  const css = compileNodeStyles([
+    { id: 'plain', type: 'section', props: {}, styles: { base: { paddingTop: 32, radius: 8 } } },
+  ]);
+  assert.equal(css, '[data-bz-node="plain"][data-bz-node]{padding-top:32px;border-radius:8px}');
+});
+
 test('style values outside the whitelist are dropped, never emitted', () => {
   const css = compileNodeStyles([
     {
